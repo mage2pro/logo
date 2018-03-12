@@ -2,7 +2,7 @@
 	"name": "mage2pro/logo"
 	,"description": "A product logotype chooser for Magento 2"
 	,"type": "magento2-module"
-	,"version": "0.0.1"
+	,"version": "0.0.2"
 	,"license": "MIT"
 	,"authors": [{
 		"name": "Dmitry Fedyuk"
