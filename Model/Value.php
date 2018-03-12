@@ -1,11 +1,9 @@
 <?php
-
 namespace Dfe\Logo\Model;
-
-class Value extends \Magento\Framework\Model\AbstractModel
-{ 
-
-    protected $_productFactory;     
+// 2018-03-13
+/** @method \Dfe\Logo\Model\ResourceModel\Value getResource() */
+class Value extends \Magento\Framework\Model\AbstractModel {
+	protected $_productFactory;
     protected $_option;
     
     function __construct(
@@ -21,15 +19,15 @@ class Value extends \Magento\Framework\Model\AbstractModel
         $this->_option = $option;                         
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
-    
-    
-    function getImages($productId)
-    {        
-      return $this->getResource()->getImages($productId);                             
-    }     
 
+	/**
+	 * 2018-03-13
+	 * @used-by \Dfe\Logo\Frontend::_toHtml()
+	 * @param $pid
+	 * @return mixed
+	 */
+    function getImages($pid) {return $this->getResource()->getImages($pid);}
 
-    
     function getOptionsCsv()
     {
 
@@ -103,9 +101,7 @@ class Value extends \Magento\Framework\Model\AbstractModel
             $csv .= $rowObject->toString($template) . "\n";					
           }	
         }
-      }  
-      
+      }
       return $csv;    
-    }      
-    
+    }
 }

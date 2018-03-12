@@ -8,20 +8,30 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
   function _construct()
   {    
     $this->_init('optionimages_value', 'oi_value_id');
-  }  
+  }
 
-
-  function getImages($productId)
-  {        
-    $select = $this->getConnection()->select()
-      ->from(array('cp' => $this->getTable('catalog_product_entity')), array())        
-      ->join(array('ca' => $this->getTable('catalog_product_option')), 'ca.product_id = cp.entity_id', array())      
-      ->join(array('va' => $this->getTable('catalog_product_option_type_value')), 'va.option_id = ca.option_id', array('option_type_id'))
-      ->join(array('oi' => $this->getMainTable()),"oi.option_type_id = va.option_type_id AND oi.image != ''" , array('image'))        
-      ->where('cp.entity_id=?', $productId);                         
-      
-    return $this->getConnection()->fetchPairs($select);                                 
-  } 
+	/**
+	 * 2018-03-13
+	 * @used-by \Dfe\Logo\Model\Value::getImages()
+	 * @param $pid
+	 * @return array
+	 * @throws \Magento\Framework\Exception\LocalizedException
+	 */
+	function getImages($pid) {
+		$c = $this->getConnection();
+		$select = $c->select()
+			->from(['cp' => $this->getTable('catalog_product_entity')], [])
+			->join(['ca' => $this->getTable('catalog_product_option')], 'ca.product_id = cp.entity_id', [])
+			->join(['va' => $this->getTable('catalog_product_option_type_value')],
+				'va.option_id = ca.option_id', ['option_type_id']
+			)
+			->join(['oi' => $this->getMainTable()],
+				"oi.option_type_id = va.option_type_id AND oi.image != ''" , ['image']
+			)
+			->where('? = cp.entity_id', $pid)
+		;
+		return $c->fetchPairs($select);
+	}
 
 
   function getImagesOfProducts($productIds)

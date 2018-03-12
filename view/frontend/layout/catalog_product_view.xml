@@ -4,16 +4,6 @@
 	xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'
 >
     <body>
-		<!--
-		<referenceContainer name='content'>
-			<block
-				after='product.info'
-				name='optionimages'
-				template='product/view/js.phtml'
-				class='Dfe\Logo\Block\Product\View\Js'
-			/>
-		</referenceContainer>
-		-->
 		<referenceBlock name='product.info.form.options'>
 			<block before='-' class='Dfe\Logo\Frontend'/>
 		</referenceBlock>
