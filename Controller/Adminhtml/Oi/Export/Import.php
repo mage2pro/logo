@@ -6,7 +6,7 @@ class Import extends \Dfe\Logo\Controller\Adminhtml\Oi\Export
 {
 
 
-  public function execute()
+  function execute()
   {
     if ($this->getRequest()->isPost() && $this->getRequest()->getFiles('import_file')) {
         try {

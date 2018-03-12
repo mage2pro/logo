@@ -18,7 +18,7 @@ abstract class Export extends \Magento\Backend\App\AbstractAction
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
      */
-    public function __construct(
+    function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Catalog\Model\ResourceModel\Product $productResource,        
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory

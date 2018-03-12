@@ -11,7 +11,7 @@ class ImportImages extends \Magento\Backend\App\AbstractAction
   protected $_jsonEncoder;
   
 
-  public function __construct(
+  function __construct(
       \Magento\Backend\App\Action\Context $context,   
       \Dfe\Logo\Model\Value $oiValue,
       \Magento\Catalog\Model\Product $product,      
@@ -27,7 +27,7 @@ class ImportImages extends \Magento\Backend\App\AbstractAction
   } 
   
 
-  public function execute()
+  function execute()
   { 
    
     $config = array('image' => array(), 'imageSavedAs' => array());  

@@ -5,13 +5,13 @@ namespace Dfe\Logo\Model\ResourceModel;
 class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
 
-  public function _construct()
+  function _construct()
   {    
     $this->_init('optionimages_value', 'oi_value_id');
   }  
 
 
-  public function getImages($productId)
+  function getImages($productId)
   {        
     $select = $this->getConnection()->select()
       ->from(array('cp' => $this->getTable('catalog_product_entity')), array())        
@@ -24,7 +24,7 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
   } 
 
 
-  public function getImagesOfProducts($productIds)
+  function getImagesOfProducts($productIds)
   { 
     $images = array();
     
@@ -48,7 +48,7 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
   }
 
 
-  public function duplicate($oldOptionId, $newOptionId)
+  function duplicate($oldOptionId, $newOptionId)
   {	
 
     $productOptionValueTable = $this->getTable('catalog_product_option_type_value');		

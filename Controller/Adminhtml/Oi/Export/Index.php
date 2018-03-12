@@ -6,7 +6,7 @@ class Index extends \Dfe\Logo\Controller\Adminhtml\Oi\Export
 {
 
 
-  public function execute()
+  function execute()
   {  
       $this->_view->loadLayout();
       $this->_setActiveMenu('Dfe_Logo::oi_export')

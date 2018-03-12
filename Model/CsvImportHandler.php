@@ -34,7 +34,7 @@ class CsvImportHandler
     protected $_csvParser; 
     protected $_objectManager;                
     
-    public function __construct(
+    function __construct(
         \Magento\Catalog\Model\Product\Option $option,
         \Magento\Catalog\Model\ProductFactory $productFactory,  
         \Magento\Framework\App\ResourceConnection $resource, 
@@ -65,7 +65,7 @@ class CsvImportHandler
     }
     
     
-    public function importFromCsvFile($file)
+    function importFromCsvFile($file)
     {
         if (!isset($file['tmp_name'])) {
             throw new \Magento\Framework\Exception\LocalizedException(__('Invalid file upload attempt.'));

@@ -8,7 +8,7 @@ class Value extends \Magento\Framework\Model\AbstractModel
     protected $_productFactory;     
     protected $_option;
     
-    public function __construct(
+    function __construct(
         \Magento\Catalog\Model\ProductFactory $productFactory,     
         \Magento\Catalog\Model\Product\Option $option,           
         \Magento\Framework\Model\Context $context,
@@ -23,14 +23,14 @@ class Value extends \Magento\Framework\Model\AbstractModel
     }
     
     
-    public function getImages($productId)
+    function getImages($productId)
     {        
       return $this->getResource()->getImages($productId);                             
     }     
 
 
     
-    public function getOptionsCsv()
+    function getOptionsCsv()
     {
 
       $headers = new \Magento\Framework\DataObject(array(

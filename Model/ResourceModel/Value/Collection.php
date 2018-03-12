@@ -7,7 +7,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     /**
      * Resource initialization
      */
-    public function _construct()
+    function _construct()
     {
         $this->_init('Dfe\Logo\Model\Value', 'Dfe\Logo\Model\ResourceModel\Value');
     }

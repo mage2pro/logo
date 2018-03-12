@@ -18,7 +18,7 @@ class CustomOptions
     protected $_urlBuilder;
         
     
-    public function __construct(
+    function __construct(
         \Dfe\Logo\Model\Value $oiValue,
         \Magento\Catalog\Model\Locator\LocatorInterface $locator, 
         \Magento\Catalog\Helper\Image $imageHelper,
@@ -31,7 +31,7 @@ class CustomOptions
     }
 
 
-    public function beforeModifyData(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $data)
+    function beforeModifyData(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $data)
     {
     
         $product = $this->locator->getProduct();
@@ -78,7 +78,7 @@ class CustomOptions
 
 
 
-    public function afterModifyMeta(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $meta)
+    function afterModifyMeta(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $meta)
     {
            
         if (isset($meta[$subject::GROUP_CUSTOM_OPTIONS_NAME]['children'][$subject::GRID_OPTIONS_NAME]['children']['record']['children'][$subject::CONTAINER_OPTION]['children'][$subject::GRID_TYPE_SELECT_NAME]['children']['record']['children'])){
@@ -157,7 +157,7 @@ class CustomOptions
 
 
 
-    public function getUploadUrl()
+    function getUploadUrl()
     {
       return $this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');
     }

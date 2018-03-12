@@ -12,7 +12,7 @@ class OptionSaveAfter implements ObserverInterface
   protected $_objectManager; 
 
 
-  public function __construct( 
+  function __construct(
       \Magento\Catalog\Model\Product\Media\Config $mediaConfig,
       \Magento\Framework\Filesystem $filesystem,
       \Magento\Framework\ObjectManagerInterface $objectManager           
@@ -23,7 +23,7 @@ class OptionSaveAfter implements ObserverInterface
   } 
  
 
-  public function execute(\Magento\Framework\Event\Observer $observer)
+  function execute(\Magento\Framework\Event\Observer $observer)
   {
   
 		$object = $observer->getEvent()->getObject();

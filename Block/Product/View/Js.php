@@ -12,7 +12,7 @@ class Js extends \Magento\Framework\View\Element\Template
     protected $_mediaConfig;
   
           
-    public function __construct(
+    function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Dfe\Logo\Model\Value $oiValue,                    
         \Magento\Framework\Registry $coreRegistry, 
@@ -31,7 +31,7 @@ class Js extends \Magento\Framework\View\Element\Template
     }
 
 
-    public function getProduct()
+    function getProduct()
     {
       if (!$this->hasData('product')) {
         $this->setData('product', $this->_coreRegistry->registry('product'));

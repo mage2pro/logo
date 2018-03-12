@@ -6,7 +6,7 @@ class Export extends \Dfe\Logo\Controller\Adminhtml\Oi\Export
 {
 
 
-  public function execute()
+  function execute()
   {
     $content = $this->_objectManager->create('Dfe\Logo\Model\Value')->getOptionsCsv();
     

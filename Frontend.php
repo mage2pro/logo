@@ -36,8 +36,8 @@ class Frontend extends _P {
 		$mc = df_o(MC::class); /** @var MC $mc */
 		return df_cc_n(
 			df_tag('div', ['class' => 'dfe-logo'] + df_widget($this, 'main', []), df_cc_n(
-				df_map($v->getImages($p->getId()), function($image) use($mc) {return
-					df_tag('img', ['src' => $mc->getMediaUrl($image)])
+				df_map_k($v->getImages($p->getId()), function($id, $image) use($mc) {return
+					df_tag('img', ['data-id' => $id, 'src' => $mc->getMediaUrl($image)])
 				;})
 			))
 			,df_link_inline(df_asset_name(null, $this, 'css'))

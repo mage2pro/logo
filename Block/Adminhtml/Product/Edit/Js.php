@@ -11,7 +11,7 @@ class Js extends \Magento\Backend\Block\Widget
     protected $_imageHelper;    
     protected $_jsonEncoder;
 
-    public function __construct(  
+    function __construct(
         \Dfe\Logo\Model\Value $oiValue,
         \Magento\Framework\File\Size $fileSize,          
         \Magento\Framework\Registry $registry,
@@ -29,7 +29,7 @@ class Js extends \Magento\Backend\Block\Widget
     }
    
     
-    public function getProduct()
+    function getProduct()
     {
       if (!$this->hasData('product')) {
         $this->setData('product', $this->_coreRegistry->registry('product'));
@@ -39,7 +39,7 @@ class Js extends \Magento\Backend\Block\Widget
 
 
 	
-    public function getDataJson()
+    function getDataJson()
     { 
       $config = array('image' => array(), 'imageSavedAs' => array());
       $product = $this->getProduct();       
@@ -56,14 +56,14 @@ class Js extends \Magento\Backend\Block\Widget
 
 
 
-    public function getUploadUrl()
+    function getUploadUrl()
     {
       return $this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');
     }
     
     
 
-    public function getFileSizeService()
+    function getFileSizeService()
     {
       return $this->_fileSizeService;
     }

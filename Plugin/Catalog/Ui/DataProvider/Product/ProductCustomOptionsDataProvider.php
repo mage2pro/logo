@@ -16,7 +16,7 @@ class ProductCustomOptionsDataProvider
     protected $_imageHelper;    
         
     
-    public function __construct(
+    function __construct(
         \Magento\Catalog\Model\Product $product,     
         \Dfe\Logo\Model\Value $oiValue,  
         \Magento\Catalog\Helper\Image $imageHelper                           
@@ -28,7 +28,7 @@ class ProductCustomOptionsDataProvider
 
 
 
-    public function afterGetData(\Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider $subject, $data)
+    function afterGetData(\Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider $subject, $data)
     {      
     
         $productIds = array();     
