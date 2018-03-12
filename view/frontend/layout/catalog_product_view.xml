@@ -1,6 +1,8 @@
 <?xml version='1.0'?>
-<page xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>	
-    <head><css src='Dfe_Logo::main.css'/></head>
+<page
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'
+>
     <body>
 		<referenceContainer name='content'>
 			<block
@@ -9,6 +11,7 @@
 				template='product/view/js.phtml'
 				class='Dfe\Logo\Block\Product\View\Js'
 			/>
+			<block after='product.info' class='Dfe\Logo\Frontend'/>
 		</referenceContainer>
     </body>
 </page>
