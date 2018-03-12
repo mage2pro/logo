@@ -4,6 +4,7 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 	 * @param {Object} config
 	 * @param {Number} config.left
 	 * @param {Number} config.optionId
+	 * @param {Number} config.scale
 	 * @param {Number} config.top
 	 * @param {HTMLAnchorElement} element
 	 * @returns void
@@ -13,7 +14,7 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 		/** @type {jQuery} HTMLDivElement */ var $main = $('.product.media');
 		var left = config.left;
 		var top = config.top;
-		var scale = 0.4;
+		var scale = config.scale;
 		var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide().prependTo($main);
 		var $select = $('#select_' + config.optionId + '.product-custom-option');
 		//$select.closest('.field').hide();

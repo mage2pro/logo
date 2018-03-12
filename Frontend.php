@@ -40,9 +40,10 @@ class Frontend extends _P {
 			df_tag('div',
 				['class' => 'dfe-logo']
 				+ df_widget($this, 'main', [
-					'left' => $p['dfe_logo_offset_left']
+					'left' => $p['dfe_logo_offset_left'] ?: 0
 					,'optionId' => dfa(df_first($images), 'option_id')
-					,'top' => $p['dfe_logo_offset_top']
+					,'scale' => $p['dfe_logo_scale'] ?: 0.4
+					,'top' => $p['dfe_logo_offset_top'] ?: 0
 				])
 				, df_cc_n(df_map($images, function(array $i) use($mc) {return
 					df_tag('img', ['data-id' => $i['option_type_id'], 'src' => $mc->getMediaUrl($i['image'])])
