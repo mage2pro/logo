@@ -2,7 +2,7 @@
 	"name": "mage2pro/option-images"
 	,"description": "A product logotype chooser for Magento 2"
 	,"type": "magento2-module"
-	,"version": "0.0.5"
+	,"version": "0.0.6"
 	,"license": "proprietary"
 	,"authors": [
 		{

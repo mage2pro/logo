@@ -34,6 +34,7 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 	/**
 	 * 2018-03-13
 	 * @used-by \Dfe\Logo\Model\Value::getImages()
+	 * @used-by \Dfe\Logo\Plugin\Catalog\Block\Product\View\Options::optionId()
 	 * @param $pid
 	 * @return array
 	 * @throws LE
