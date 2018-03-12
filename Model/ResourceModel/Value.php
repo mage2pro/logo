@@ -1,7 +1,6 @@
 <?php
-
 namespace Dfe\Logo\Model\ResourceModel;
-
+use Magento\Framework\Exception\LocalizedException as LE;
 class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
 
@@ -12,25 +11,47 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
 	/**
 	 * 2018-03-13
-	 * @used-by \Dfe\Logo\Model\Value::getImages()
 	 * @param $pid
 	 * @return array
-	 * @throws \Magento\Framework\Exception\LocalizedException
+	 * @throws LE
 	 */
 	function getImages($pid) {
 		$c = $this->getConnection();
 		$select = $c->select()
-			->from(['cp' => $this->getTable('catalog_product_entity')], [])
-			->join(['ca' => $this->getTable('catalog_product_option')], 'ca.product_id = cp.entity_id', [])
-			->join(['va' => $this->getTable('catalog_product_option_type_value')],
-				'va.option_id = ca.option_id', ['option_type_id']
+			->from(['p' => $this->getTable('catalog_product_entity')], [])
+			->join(['o' => $this->getTable('catalog_product_option')], 'o.product_id = p.entity_id', [])
+			->join(['v' => $this->getTable('catalog_product_option_type_value')],
+				'v.option_id = o.option_id', ['option_type_id']
 			)
 			->join(['oi' => $this->getMainTable()],
-				"oi.option_type_id = va.option_type_id AND oi.image != ''" , ['image']
+				"oi.option_type_id = v.option_type_id AND oi.image != ''" , ['image']
 			)
-			->where('? = cp.entity_id', $pid)
+			->where('? = p.entity_id', $pid)
 		;
 		return $c->fetchPairs($select);
+	}
+
+	/**
+	 * 2018-03-13
+	 * @used-by \Dfe\Logo\Model\Value::getImages()
+	 * @param $pid
+	 * @return array
+	 * @throws LE
+	 */
+	function getImagesWithOptionId($pid) {
+		$c = $this->getConnection();
+		$select = $c->select()
+			->from(['p' => $this->getTable('catalog_product_entity')], [])
+			->join(['o' => $this->getTable('catalog_product_option')], 'o.product_id = p.entity_id', ['option_id'])
+			->join(['v' => $this->getTable('catalog_product_option_type_value')],
+				'v.option_id = o.option_id', ['option_type_id']
+			)
+			->join(['oi' => $this->getMainTable()],
+				"oi.option_type_id = v.option_type_id AND oi.image != ''" , ['image']
+			)
+			->where('? = p.entity_id', $pid)
+		;
+		return $c->fetchAll($select);
 	}
 
 
