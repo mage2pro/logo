@@ -39,7 +39,11 @@ class Frontend extends _P {
 		return df_cc_n(
 			df_tag('div',
 				['class' => 'dfe-logo']
-				+ df_widget($this, 'main', ['optionId' => dfa(df_first($images), 'option_id')])
+				+ df_widget($this, 'main', [
+					'left' => $p['dfe_logo_offset_left']
+					,'optionId' => dfa(df_first($images), 'option_id')
+					,'top' => $p['dfe_logo_offset_top']
+				])
 				, df_cc_n(df_map($images, function(array $i) use($mc) {return
 					df_tag('img', ['data-id' => $i['option_type_id'], 'src' => $mc->getMediaUrl($i['image'])])
 				;}))
