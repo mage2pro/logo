@@ -1,29 +1,12 @@
-<?xml version='1.0'?>
-<config
-	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-	xsi:noNamespaceSchemaLocation='urn:magento:framework:ObjectManager/etc/config.xsd'
->
-<!-- 2018-03-12
-I did it by analogy with Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions:
-https://github.com/magento/magento2/blob/2.1.9/app/code/Magento/Catalog/etc/adminhtml/di.xml#L153-L157
--->
-	<type name='Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions'>
-		<arguments>
-			<argument name='scopeName' xsi:type='string'>product_form.product_form</argument>
-		</arguments>
-	</type>	
-	<virtualType name='Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool'>
-		<arguments>
-			<argument name='modifiers' xsi:type='array'>
-				<item name='dfe_logo' xsi:type='array'>
-					<item name='class' xsi:type='string'>Dfe\Logo\Modifier</item>
-<!-- 2018-03-12
-It will be executed just after Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions:
-https://github.com/magento/magento2/blob/2.1.9/app/code/Magento/Catalog/etc/adminhtml/di.xml#L121-L124
--->
-					<item name='sortOrder' xsi:type='number'>71</item>
-				</item>				
-			</argument>
-		</arguments>
-	</virtualType>
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product\Option\Value">
+        <plugin name="optionimagesDuplicateProduct" type="Dfe\Logo\Model\Plugin\DuplicateProduct"/>
+    </type>  
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions">
+        <plugin name="optionimagesCustomOptions" type="Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions"/>
+    </type>
+    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider">
+        <plugin name="optionimagesImportCustomOptions" type="Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider"/>
+    </type>                           
 </config>

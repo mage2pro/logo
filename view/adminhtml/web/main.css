@@ -1,0 +1,9 @@
+
+
+td.oi-image-column {width: 120px;}
+td.oi-image-column .uploader {width:120px;}
+td.oi-image-column .uploader .browse-button {margin-top: 8px;}
+td.oi-image-column .uploader .file-row .file-info {word-wrap: break-word;}  
+td.oi-image-column .uploader .file-row .progressbar-container .upload-progress {background-color: #5cb85c;}
+
+button.oi-delete-button {margin-left: 5px; vertical-align: top;}

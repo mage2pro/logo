@@ -1,9 +1,0 @@
-<?xml version='1.0'?>
-<config
-	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-	xsi:noNamespaceSchemaLocation='urn:magento:module:Magento_Catalog:etc/product_options.xsd'
->
-    <option name='select'>
-        <inputType name='dfe_logo' label='Logotypes' />
-    </option>
-</config>

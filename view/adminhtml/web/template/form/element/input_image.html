@@ -1,0 +1,92 @@
+  <div class="oi-image-column"> 
+    <img
+      data-bind="
+          attr: {
+              src: image,
+              id: 'oi_image_placeholder_'+uid
+          },
+          visible: image != ''     
+      " 
+      width="40" height="40"
+    />
+    <button 
+      data-bind="
+          attr: {
+              id: 'oi_delete_image_button_'+uid,
+              title: deleteImageText
+          },
+          visible: image != ''     
+      "    
+      type="button" 
+      class="oi-delete-button">
+      <span>X</span>
+    </button>
+    <input data-form-part="product_form" type="hidden"
+      data-bind="
+          attr: {
+              id: 'oi_delete_image_'+uid,
+              name: inputName.replace('image', 'delete_image')
+          }     
+      "      
+    />
+    <input data-form-part="product_form" type="hidden"
+      data-bind="
+          attr: {
+              id: 'oi_image_saved_as_'+uid,
+              name: inputName.replace('image', 'image_saved_as')
+          },
+          value: $data.imageSavedAs               
+      "      
+    /> 
+    <input data-form-part="product_form" type="hidden"
+      data-bind="
+          attr: {
+              id: 'oi_image_input_'+uid,
+              name: inputName
+          },
+          value: value               
+      "      
+    />                                
+    <div 
+      data-bind="
+          attr: {
+              id: 'oi_image_uploader_'+uid
+          },
+          visible: image == ''     
+      "    
+      class="uploader">
+        <div 
+          data-bind="
+              attr: {
+                  id: 'oi_image_browse_button_'+uid
+              }"        
+          class="fileinput-button form-buttons button browse-button">
+            <span data-bind="text: browseFilesText"></span>
+            <input type="file" 
+              data-bind="
+                  attr: {
+                      id: 'oi_image_file_'+uid,
+                      name: 'image',
+                      'data-url': uploadUrl                      
+                  }   
+              "             
+            />
+        </div>
+        <div class="clear"></div>
+        <div class="no-display" 
+            data-bind="
+                attr: {
+                    id: 'oi_image_uploader_'+uid+'-template'                    
+                }   
+            ">
+            <div id="{{id}}" class="file-row">
+                <span class="file-info">{{name}} ({{size}})</span>
+                <div class="progressbar-container">
+                    <div class="progressbar upload-progress" style="width: 0%;">&nbsp;</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <span data-bind="afterRender: function(){oIAddUploader(uid)}"></span>     
+  </div> 

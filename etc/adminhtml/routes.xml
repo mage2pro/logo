@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+    <router id="admin">
+        <route id="optionimages" frontName="optionimages">
+            <module name="Dfe_Logo" before="Magento_Backend" />
+        </route>
+    </router>
+</config>

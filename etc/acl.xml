@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">              
+                <resource id="Magento_Backend::system">
+                    <resource id="Magento_Backend::convert">
+                        <resource id="Dfe_Logo::export" title="Product Option Images" sortOrder="40" />
+                    </resource>
+                </resource>
+            </resource>            
+        </resources>
+    </acl>
+</config>

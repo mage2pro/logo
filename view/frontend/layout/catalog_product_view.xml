@@ -1,0 +1,14 @@
+<?xml version='1.0'?>
+<page xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>	
+    <head><css src='Dfe_Logo::main.css'/></head>
+    <body>
+		<referenceContainer name='content'>
+			<block
+				after='product.info'
+				name='optionimages'
+				template='product/view/js.phtml'
+				class='Dfe\Logo\Block\Product\View\Js'
+			/>
+		</referenceContainer>
+    </body>
+</page>

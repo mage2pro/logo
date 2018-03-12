@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config>
+    <event name="model_save_after">
+        <observer name="optionimages_save_option" instance="Dfe\Logo\Model\Observer\OptionSaveAfter"/>
+    </event> 
+</config>

@@ -1,0 +1,41 @@
+
+<div class="import-export-tax-rates">
+    <div class="import-tax-rates">
+            <fieldset class="fieldset">
+              <legend class="legend"><span><?php echo __('Import Product Option Images'); ?></span></legend>            
+              <form class="import-form" action="<?php echo $this->getUrl('optionimages/oi_export/import') ?>" method="post" enctype="multipart/form-data">            
+                <?php echo $this->getBlockHtml('formkey')?>                         
+                <input type="file" name="import_file" class="input-file required-entry"/>                     
+                <?php echo $this->getButtonHtml(__('Import Option Images'), '', 'import-submit') ?>
+              </form>                                                                         
+            </fieldset>      
+        <script type="text/javascript">
+
+            require([
+                "jquery",
+                "mage/mage",
+                "loadingPopup"
+            ], function ($) {
+                $('.import-form').mage('form').mage('validation');            
+                $('.import-submit').click(function(){
+                    if ($(this).prev('input').val()) {
+                        $('body').loadingPopup({
+                            timeout: false
+                        });
+
+                        $(this.form).submit();
+                    }
+                });
+            });
+        </script>
+    </div>
+    <div class="export-tax-rates box-right"> 
+        <fieldset class="fieldset">
+            <legend class="legend"><span><?php echo __('Export Product Option Images') ?></span></legend>
+            <form action="<?php echo $this->getUrl('optionimages/oi_export/export') ?>" method="post" enctype="multipart/form-data">
+              <?php echo $this->getBlockHtml('formkey')?>            
+              <?php echo $this->getButtonHtml('Export Option Images', "this.form.submit()") ?>
+            </form>                                          
+        </fieldset>
+    </div>
+</div>
