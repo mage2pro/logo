@@ -11,7 +11,12 @@
 				template='product/view/js.phtml'
 				class='Dfe\Logo\Block\Product\View\Js'
 			/>
-			<block after='product.info' class='Dfe\Logo\Frontend'/>
+		</referenceContainer>
+		<referenceBlock name='product.info.form.options'>
+			<block before='-' class='Dfe\Logo\Frontend'/>
+		</referenceBlock>
+		<referenceContainer name='product.info.form.content'>
+			<block after='-' class='Dfe\Logo\Frontend'/>
 		</referenceContainer>
     </body>
 </page>
