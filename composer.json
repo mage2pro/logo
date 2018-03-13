@@ -6,15 +6,15 @@
 	,"license": "proprietary"
 	,"authors": [
 		{
-			"name": "Stanislav Luganov"
-			,"email": "pektsekye@gmail.com"
-			,"homepage": "http://hottons.com"
-			,"role": "Developer"
-		}
-		,{
 			"name": "Dmitry Fedyuk"
 			,"email": "admin@mage2.pro"
 			,"homepage": "https://mage2.pro/users/dmitry_fedyuk"
+			,"role": "Developer"
+		}
+		,{
+			"name": "Stanislav Luganov"
+			,"email": "pektsekye@gmail.com"
+			,"homepage": "http://hottons.com"
 			,"role": "Developer"
 		}
 	]
