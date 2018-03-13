@@ -25,4 +25,4 @@ If you have some problems while executing these commands, then check the [detail
 
 ![](https://mage2.pro/uploads/default/original/2X/4/49d720d69356dd74a2301c5b9f5bec816701b190.png)
 
-![]()
+![](https://mage2.pro/uploads/default/original/2X/c/c9fb78c2d5c2f40bff80247712ddba0da08adc5b.png)
