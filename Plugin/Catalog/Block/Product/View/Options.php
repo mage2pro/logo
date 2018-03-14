@@ -24,12 +24,12 @@ final class Options {
 
 	/**
 	 * 2018-03-13
-	 * @return int|null
+	 * @return int
 	 */
 	function optionId() {return dfc($this, function() {
 		$rc = df_o(Rc::class); /** @var Rc $rc */
 		$p = df_registry('product'); /** @var Product $p */
-		return (int)dfa(df_first($rc->getImagesWithOptionId($p->getId())), 'option_id');
+		return (int)dfa(df_eta(df_first($rc->getImagesWithOptionId($p->getId()))), 'option_id');
 	});}
 }
 
