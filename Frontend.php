@@ -35,8 +35,7 @@ class Frontend extends _P {
 		$p = df_registry('product'); /** @var Product $p */
 		$mc = df_o(MC::class); /** @var MC $mc */
 		$rc = df_o(Rc::class); /** @var Rc $rc */
-		$images = $rc->getImagesWithOptionId($p->getId());
-		return df_cc_n(
+		return !($images = $rc->getImagesWithOptionId($p->getId())) ? '' : df_cc_n(
 			df_tag('div',
 				['class' => 'dfe-logo']
 				+ df_widget($this, 'main', [
