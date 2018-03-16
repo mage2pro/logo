@@ -3,10 +3,16 @@
 	margin-bottom: 2em;
 	overflow: hidden;
 	width: 100%;
-	img {
+	> div {
 		display: block;
 		float: left;
 		&:not(:first-child) {margin-left: 1em}
+		> img {display: block;}
+		> div {
+			font-size: 14px;
+			margin-top: 0.5em;
+			text-align: center;
+		}
 	}
 }
 .dfe-logo-applied {position: absolute; z-index: 1;}

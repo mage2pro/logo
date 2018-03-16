@@ -33,7 +33,7 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
 	/**
 	 * 2018-03-13
-	 * @used-by \Dfe\Logo\Model\Value::getImages()
+	 * @used-by getImagesWithOptionIdAndTitle()
 	 * @used-by \Dfe\Logo\Plugin\Catalog\Block\Product\View\Options::optionId()
 	 * @param $pid
 	 * @return array
@@ -53,6 +53,54 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 			->where('? = p.entity_id', $pid)
 		;
 		return $c->fetchAll($select);
+	}
+
+	/**
+	 * 2018-03-17
+	 * «Logo name appear below logo image»
+	 * https://www.upwork.com/d/contracts/19713402
+	 * @used-by \Dfe\Logo\Model\Value::getImages()
+	 * @param $pid
+	 * @return array
+	 * @throws LE
+	 */
+	function getImagesWithOptionIdAndTitle($pid) {
+		$r = $this->getImagesWithOptionId($pid);
+		/** @var array(string => string|int) $titles */
+		$titles = $this->titles(array_column($r, 'option_type_id'));
+		$sid = df_store_id(); /** @var int $sid */
+		return array_map(function(array $i) use($titles, $sid) {
+			$tid = $i['option_type_id']; /** @var int $tid */
+			/** @var array(string => string|int) $matchedTitles */
+			$matchedTitles = array_column(
+				array_filter($titles, function(array $t) use ($tid) {return $tid === $t['option_type_id'];})
+				,'title', 'store_id'
+			);
+			return $i + [self::K_TITLE => dfa($matchedTitles, $sid, dfa($matchedTitles, 0))];
+		}, $r);
+	}
+
+	/**
+	 * 2018-03-17
+	 * @used-by getImagesWithOptionIdAndTitle()
+	 * @used-by \Dfe\Logo\Frontend::_toHtml()
+	 */
+	const K_TITLE = 'title';
+
+	/**
+	 * 2018-03-17
+	 * «Logo name appear below logo image»
+	 * https://www.upwork.com/d/contracts/19713402
+	 * @param int[] $optionTypeIds
+	 * @return array
+	 */
+	function titles(array $optionTypeIds) {
+		$c = $this->getConnection();
+		$s = $c->select()
+			->from($this->getTable('catalog_product_option_type_title'))
+			->where('option_type_id IN (?)', $optionTypeIds)
+		;
+		return $c->fetchAll($s);
 	}
 
 

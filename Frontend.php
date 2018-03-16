@@ -35,7 +35,7 @@ class Frontend extends _P {
 		$p = df_registry('product'); /** @var Product $p */
 		$mc = df_o(MC::class); /** @var MC $mc */
 		$rc = df_o(Rc::class); /** @var Rc $rc */
-		return !($images = $rc->getImagesWithOptionId($p->getId())) ? '' : df_cc_n(
+		return !($images = $rc->getImagesWithOptionIdAndTitle($p->getId())) ? '' : df_cc_n(
 			df_tag('div',
 				['class' => 'dfe-logo']
 				+ df_widget($this, 'main', [
@@ -45,7 +45,14 @@ class Frontend extends _P {
 					,'top' => $p['dfe_logo_offset_top'] ?: 0
 				])
 				, df_cc_n(df_map($images, function(array $i) use($mc) {return
-					df_tag('img', ['data-id' => $i['option_type_id'], 'src' => $mc->getMediaUrl($i['image'])])
+					df_tag('div', null, df_cc_n(
+						df_tag('img', [
+							'alt' => $i[Rc::K_TITLE]
+							,'data-id' => $i['option_type_id']
+							,'src' => $mc->getMediaUrl($i['image'])
+						])
+						,df_tag('div', null, $i[Rc::K_TITLE])
+					))
 				;}))
 			), df_link_inline(df_asset_name(null, $this, 'css'))
 		);
