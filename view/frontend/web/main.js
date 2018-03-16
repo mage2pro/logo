@@ -12,9 +12,11 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 	function(config, element) {
 		/** @type {jQuery} HTMLDivElement */ var $c = $(element);
 		/** @type {jQuery} HTMLDivElement */ var $main = $('.product.media');
-		var left = config.left;
-		var top = config.top;
-		var scale = config.scale;
+		var mh = $main.height();
+		var mw = $main.width();
+		var left = mw * config.left / 100;
+		var top = mh * config.top / 100;
+		var scale = config.scale / 100;
 		var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide().prependTo($main);
 		var $select = $('#select_' + config.optionId + '.product-custom-option');
 		$('img', $c).click(function() {
