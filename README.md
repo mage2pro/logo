@@ -37,9 +37,9 @@ You should add these attributes to your **attribute set**:
 ![](https://mage2.pro/uploads/default/original/2X/9/97ca2c5f7ef2501f53f417307062d0ca6b646933.png)
 
 Then the attributes will be should on your backend product page.  
-The `dfe_logo_offset_left` and `dfe_logo_offset_top` attributes specify the chosen logotype's offset relative the top left corner of the main product image.  
-The `dfe_logo_scale` attibutes specifies the scale factor of the chosen logotype. E.g. the `0.4` value means that the chosen logotype will have 40% of its initial size. 
-![](https://mage2.pro/uploads/default/original/2X/b/b992161a9c1733a0c97622d7fe267657114da75e.png)
+The `dfe_logo_offset_left` and `dfe_logo_offset_top` attributes specify the chosen logotype's offset (in percent) relative the top left corner of the main product image. E.g. of the both values has the `50` value, the logotype will be placed in the center of the main product image.   
+The `dfe_logo_scale` attibutes specifies the scale factor (in percent) of the chosen logotype. E.g. the `40` value means that the chosen logotype will have 40% of its initial size. 
+![](https://mage2.pro/uploads/default/original/2X/c/cc531a99fef641413d6a6471d5d6a48ba5a298a1.png)
 
 
 
