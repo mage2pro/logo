@@ -17,7 +17,6 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 		var scale = config.scale;
 		var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide().prependTo($main);
 		var $select = $('#select_' + config.optionId + '.product-custom-option');
-		//$select.closest('.field').hide();
 		$('img', $c).click(function() {
 			var $this = $(this);
 			var h = $this.height() * scale;
@@ -33,5 +32,14 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 				.show()
 			;
 		});
+		/**
+		 * 2018-03-16
+		 * «When we scroll to next product image remove the logo».
+		 * https://www.upwork.com/d/contracts/19713405
+		 * http://fotorama.io/customize/api#events
+		 */
+		$('.fotorama', $main).on('fotorama:show', function (e, fotorama, extra) {
+			$logo.hide();
+		});		
 	});
 });
