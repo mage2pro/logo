@@ -38,8 +38,17 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 		 * https://www.upwork.com/d/contracts/19713405
 		 * http://fotorama.io/customize/api#events
 		 */
-		$('.fotorama', $main).on('fotorama:show', function() {
-			$logo.hide();
-		});		
+		var fotoramaInitialized = false;
+		$('.gallery-placeholder', $main).bind('DOMSubtreeModified', function() {
+			if (!fotoramaInitialized) {
+				var $f = $('.fotorama', $main);
+				if ($f.length) {
+					fotoramaInitialized = true;
+					$f.on('fotorama:show', function() {
+						$logo.hide();
+					});
+				}
+			}
+		});
 	});
 });
