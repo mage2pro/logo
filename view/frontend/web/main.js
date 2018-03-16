@@ -38,7 +38,7 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 		 * https://www.upwork.com/d/contracts/19713405
 		 * http://fotorama.io/customize/api#events
 		 */
-		$('.fotorama', $main).on('fotorama:show', function (e, fotorama, extra) {
+		$('.fotorama', $main).on('fotorama:show', function() {
 			$logo.hide();
 		});		
 	});
