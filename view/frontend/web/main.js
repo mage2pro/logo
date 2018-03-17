@@ -18,16 +18,12 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 		var left = mw * config.left / 100;
 		var top = mh * config.top / 100;
 		var scale = config.scale / 100;
-		var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide()
-			.insertBefore($stage)
-			//.prependTo($stage)
-		;
+		var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide().insertBefore($stage);
 		var $select = $('#select_' + config.optionId + '.product-custom-option');
 		var lsbz = {w: null, h: null};
 		$('img', $c).click(function() {
 			var $this = $(this);
 			lsbz = {h: $this.height() * scale, w: $this.width() * scale};
-			//console.log('Initial logo size: ' + Math.round(w) + 'x' + Math.round(h));
 			$select.val($this.data('id'));
 			$logo
 				.attr('src', this.src)
@@ -46,8 +42,6 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 				$logo.hide();
 				logoWasHidden = true;
 			}
-			//console.log([Math.round(l), Math.round(t), logoWasHidden ? 1 : 0]);
-			//console.log('logoWasHidden: ' + (logoWasHidden ? 1 : 0));
 			if (logoWasHidden) {
 				if (!$logoZ) {
 					$logoZ = $('<img>').attr({class: 'dfe-logo-applied-zoom', src: $logo[0].src});
@@ -66,11 +60,8 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 					Math.round(l), Math.round(t)
 					,Math.round(lZ + l - wZ / 2), Math.round(tZ + t - hZ / 2)
 				]);
-				//console.log([Math.round(left + wZ / 2), Math.round(top + hZ / 2)]);
 				if (!$logoZ.parent().length) {
-					//$logoZ.insertBefore(i);
 					$logoZ.insertBefore($stage);
-					//$logoZ.prependTo($stage);
 				}
 			}
 		});
