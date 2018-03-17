@@ -56,10 +56,6 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 					,top : (tZ + t - hZ / 2) + 'px'
 					,height: hZ + 'px'
 				});
-				console.log([
-					Math.round(l), Math.round(t)
-					,Math.round(lZ + l - wZ / 2), Math.round(tZ + t - hZ / 2)
-				]);
 				if (!$logoZ.parent().length) {
 					$logoZ.insertBefore($stage);
 				}
