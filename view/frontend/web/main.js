@@ -88,13 +88,15 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 					};
 					var logoInitialized = false;
 					var check = function() {
-						if (!logoInitialized && $stage.width() && $stage.height()) {
-							console.log('stage exists');
-							init();
-							logoInitialized = true;
-						}
-						else {
-							console.log('stage is not exist');
+						if (!logoInitialized) {
+							if (!$stage.width() || !$stage.height()) {
+								console.log('stage is not exist');
+							}
+							else {
+								console.log('stage exists');
+								init();
+								logoInitialized = true;
+							}
 						}
 					};
 					check();
