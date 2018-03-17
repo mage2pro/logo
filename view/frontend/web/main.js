@@ -12,27 +12,77 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 	function(config, element) {
 		/** @type {jQuery} HTMLDivElement */ var $c = $(element);
 		/** @type {jQuery} HTMLDivElement */ var $main = $('.product.media');
-		var mh = $main.height();
-		var mw = $main.width();
+		var $stage = $('.fotorama__stage', $main);
+		var mh = $stage.height();
+		var mw = $stage.width();
 		var left = mw * config.left / 100;
 		var top = mh * config.top / 100;
 		var scale = config.scale / 100;
-		var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide().prependTo($main);
+		var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide()
+			.insertBefore($stage)
+			//.prependTo($stage)
+		;
 		var $select = $('#select_' + config.optionId + '.product-custom-option');
+		var lsbz = {w: null, h: null};
 		$('img', $c).click(function() {
 			var $this = $(this);
-			var h = $this.height() * scale;
-			var w = $this.width() * scale;
+			lsbz = {h: $this.height() * scale, w: $this.width() * scale};
+			//console.log('Initial logo size: ' + Math.round(w) + 'x' + Math.round(h));
 			$select.val($this.data('id'));
 			$logo
 				.attr('src', this.src)
 				.css({
-					'margin-left': (left - w / 2) + 'px'
-					,'margin-top' : (top - h / 2) + 'px'
-					,height: h + 'px'
+					'margin-left': (left - lsbz.w / 2) + 'px'
+					,'margin-top' : (top - lsbz.h / 2) + 'px'
+					,height: lsbz.h + 'px'
 				})
 				.show()
 			;
+		});
+		var $logoZ = null;
+		var logoWasHidden = false;
+		$(window).bind('dfe.zoom.move', function(e, i, l, t) {
+			if ($logo.is(':visible')) {
+				$logo.hide();
+				logoWasHidden = true;
+			}
+			//console.log([Math.round(l), Math.round(t), logoWasHidden ? 1 : 0]);
+			//console.log('logoWasHidden: ' + (logoWasHidden ? 1 : 0));
+			if (logoWasHidden) {
+				if (!$logoZ) {
+					$logoZ = $('<img>').attr({class: 'dfe-logo-applied-zoom', src: $logo[0].src});
+				}
+				var scaleZ = i.width / mh;
+				var hZ = lsbz.h * scaleZ;
+				var wZ = lsbz.w * scaleZ;
+				var lZ = i.width * config.left / 100;
+				var tZ = i.height * config.top / 100;
+				$logoZ.css({
+					left: (lZ + l - wZ / 2) + 'px'
+					,top : (tZ + t - hZ / 2) + 'px'
+					,height: hZ + 'px'
+				});
+				console.log([
+					Math.round(l), Math.round(t)
+					,Math.round(lZ + l - wZ / 2), Math.round(tZ + t - hZ / 2)
+				]);
+				//console.log([Math.round(left + wZ / 2), Math.round(top + hZ / 2)]);
+				if (!$logoZ.parent().length) {
+					//$logoZ.insertBefore(i);
+					$logoZ.insertBefore($stage);
+					//$logoZ.prependTo($stage);
+				}
+			}
+		});
+		$(window).bind('dfe.zoom.end', function(e, i) {
+			if ($logoZ) {
+				$logoZ.remove();
+				$logoZ = null;
+			}
+			if (logoWasHidden) {
+				$logo.show();
+				logoWasHidden = false;
+			}
 		});
 		/**
 		 * 2018-03-16
