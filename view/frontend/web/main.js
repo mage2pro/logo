@@ -34,19 +34,21 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 							// 2018-03-18
 							// I intentionally do not cache these values outside of the handler
 							// because they will be changed on the browser's window resize.
-							var mh = $stage.height();
-							var mw = $stage.width();
+							var $mi = $('div.fotorama__active', $stage).children('img.fotorama__img');
+							var mh = $mi[0].height;
+							var mw = $mi[0].width;
 							var left = mw * config.left / 100;
 							var top = mh * config.top / 100;
 							var $this = $(this);
 							logoEnabled = true;
-							normal = {h: $this.height() * scale, w: $this.width() * scale, stageW: mw};
+							normal = {h: $this.height() * scale, w: $this.width() * scale, mw: mw};
 							$select.val($this.data('id'));
+							var p = $mi.position();
 							$logo
 								.attr('src', this.src)
 								.css({
-									'margin-left': (left - normal.w / 2) + 'px'
-									,'margin-top' : (top - normal.h / 2) + 'px'
+									'margin-left': (left + p.left - normal.w / 2) + 'px'
+									,'margin-top' : (top + p.top - normal.h / 2) + 'px'
 									,height: normal.h + 'px'
 								})
 								.show()
@@ -66,7 +68,7 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 								if (!$logoZ) {
 									$logoZ = $('<img>').attr({class: 'dfe-logo-applied', src: $logo[0].src});
 								}
-								var scaleZ = i.width / normal.stageW;
+								var scaleZ = i.width / normal.mw;
 								var hZ = normal.h * scaleZ;
 								var wZ = normal.w * scaleZ;
 								var lZ = i.width * config.left / 100;
@@ -120,10 +122,10 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 									$logoF = $('<img>').attr({class: 'dfe-logo-applied', src: $logo[0].src});
 								}
 								var init = function() {
-									var $i = $('img.fotorama__img--full', $stage);
+									var $i = $('div.fotorama__active', $stage).children('img.fotorama__img--full');
 									var i = $i[0];
 									if (i) {
-										var scaleF = i.width / normal.stageW;
+										var scaleF = i.width / normal.mw;
 										var hF = normal.h * scaleF;
 										var wF = normal.w * scaleF;
 										var lF = i.width * config.left / 100;
