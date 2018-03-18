@@ -150,9 +150,9 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 								};
 								if (!init()) {
 									var onLoad = function(e, f, d) {
-										if (d.frame.isMain) {
+										console.log(d.frame);
+										if (init()) {
 											$f.off('fotorama:load', onLoad);
-											init();
 										}
 									};
 									$f.on('fotorama:load', onLoad);
