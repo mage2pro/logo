@@ -20,10 +20,6 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 					/** @type {jQuery} HTMLDivElement */ var $c = $(element);
 					var $stage = $('.fotorama__stage', $main);
 					var init = function() {
-						var mh = $stage.height();
-						var mw = $stage.width();
-						var left = mw * config.left / 100;
-						var top = mh * config.top / 100;
 						var scale = config.scale / 100;
 						var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide().insertBefore($stage);
 						/**
@@ -36,6 +32,13 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 						var $select = $('#select_' + config.optionId + '.product-custom-option');
 						var lsbz = {w: null, h: null};
 						$('img', $c).click(function() {
+							// 2018-03-18
+							// I intentionally do not cache these values outside of the handler
+							// because they will be changed on the browser's window resize.
+							var mh = $stage.height();
+							var mw = $stage.width();
+							var left = mw * config.left / 100;
+							var top = mh * config.top / 100;
 							var $this = $(this);
 							lsbz = {h: $this.height() * scale, w: $this.width() * scale};
 							$select.val($this.data('id'));
@@ -51,7 +54,8 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 						});
 						var $logoZ = null;
 						var logoWasHidden = false;
-						$(window).bind('dfe.zoom.move', function(e, i, l, t) {
+						var $window = $(window);
+						$window.bind('dfe.zoom.move', function(e, i, l, t) {
 							if ($logo.is(':visible')) {
 								$logo.hide();
 								logoWasHidden = true;
@@ -60,7 +64,7 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 								if (!$logoZ) {
 									$logoZ = $('<img>').attr({class: 'dfe-logo-applied-zoom', src: $logo[0].src});
 								}
-								var scaleZ = i.width / mh;
+								var scaleZ = i.width / $stage.width();
 								var hZ = lsbz.h * scaleZ;
 								var wZ = lsbz.w * scaleZ;
 								var lZ = i.width * config.left / 100;
@@ -75,7 +79,7 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 								}
 							}
 						});
-						$(window).bind('dfe.zoom.end', function(e, i) {
+						$window.bind('dfe.zoom.end', function(e, i) {
 							if ($logoZ) {
 								$logoZ.remove();
 								$logoZ = null;
@@ -84,6 +88,10 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 								$logo.show();
 								logoWasHidden = false;
 							}
+						});
+						// 2018-03-18
+						$window.resize(function() {
+
 						});
 					};
 					var logoInitialized = false;
