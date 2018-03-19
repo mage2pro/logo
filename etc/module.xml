@@ -1,4 +1,9 @@
-<?xml version="1.0"?>
+<?xml version='1.0'?>
 <config>
-    <module name="Dfe_Logo" setup_version="1.0.0"/>
+    <module name='Dfe_Logo' setup_version='1.0.0'>
+        <sequence>
+			<!-- 2018-03-20 https://mage2.pro/t/200/4 -->
+			<module name='Magento_ProductVideo'/>
+		</sequence>
+    </module>
 </config> 

@@ -1,6 +1,15 @@
-<?xml version="1.0"?>
-<config>
-    <event name="model_save_after">
-        <observer name="optionimages_save_option" instance="Dfe\Logo\Model\Observer\OptionSaveAfter"/>
+<?xml version='1.0'?>
+<config 
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:Event/etc/events.xsd'
+>
+    <event name='model_save_after'>
+        <observer name='optionimages_save_option' instance='Dfe\Logo\Observer\OptionSaveAfter'/>
     </event> 
+	<event name='catalog_product_gallery_prepare_layout'>
+		<observer
+			instance='Dfe\Logo\Observer\CatalogProductGalleryPrepareLayout'
+			name='Dfe\Logo\Observer\CatalogProductGalleryPrepareLayout'
+		/>
+	</event>	
 </config>

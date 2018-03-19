@@ -1,16 +1,10 @@
 <?php
-
-namespace Dfe\Logo\Model\Observer;
-
+namespace Dfe\Logo\Observer;
 use Magento\Framework\Event\ObserverInterface;
-
-class OptionSaveAfter implements ObserverInterface
-{
-
+class OptionSaveAfter implements ObserverInterface {
   protected $_mediaConfig;
   protected $_mediaDirectory;  
   protected $_objectManager; 
-
 
   function __construct(
 	  \Magento\Catalog\Model\Product\Media\Config $mediaConfig,
@@ -44,29 +38,20 @@ class OptionSaveAfter implements ObserverInterface
 		}
 		return $this;
 	}
-  
 	
-	
-  protected function _moveImageFromTmp($file)
-  {
+  protected function _moveImageFromTmp($file) {
 	  if (strrpos($file, '.tmp') == strlen($file) - 4) {
 		  $file = substr($file, 0, strlen($file) - 4);
 	  }
-
 	  $destFile = dirname(
 		  $file
 	  ) . '/' . \Magento\MediaStorage\Model\File\Uploader::getNewFileName(
 		  $this->_mediaDirectory->getAbsolutePath($this->_mediaConfig->getMediaPath($file))
 	  );
-
 	  $this->_mediaDirectory->renameFile(
 		$this->_mediaConfig->getTmpMediaPath($file),
 		$this->_mediaConfig->getMediaPath($destFile)
 	  );
-	
 	  return str_replace('\\', '/', $destFile);
-  } 
-  
-  
-  
+  }
 }
