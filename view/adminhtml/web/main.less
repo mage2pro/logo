@@ -11,10 +11,20 @@ td.oi-image-column {
 }
 button.oi-delete-button {margin-left: 5px; vertical-align: top;}
 // 2018-03-20
-.image-panel .dfe-logo-field {
-	background: pink;
+.image-panel .admin__fieldset .dfe-logo-field {
 	margin-bottom: 0;
 	margin-left:  0;
-	> label {margin-left: 3px !important; width: auto !important;}
-	.admin__field-control {width: 4em;}
+	overflow: hidden;
+	width: 20em;
+	> label {
+		display: block;
+		float: left;
+		margin-left: 3px;
+		width: auto;
+	}
+	.admin__field-control {
+		float: right;
+		margin: 0;
+		width: 4em;
+	}
 }
