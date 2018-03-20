@@ -1,12 +1,15 @@
-<?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../Magento/Core/etc/layout_single.xsd">
-    <head>
-        <css  src="Dfe_Logo::main.css"/>
-        <link src="Dfe_Logo::main.js"/>
-    </head>  
-    <body>
-        <referenceContainer name="js">
-            <block class="Dfe\Logo\Block\Adminhtml\Product\Edit\Js" template="product/edit/js.phtml"/>
-        </referenceContainer>
-    </body>     
+<?xml version='1.0'?>
+<page
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'
+>
+	<head>
+		<css src='Dfe_Logo::main.css'/>
+		<link src='Dfe_Logo::main.js'/>
+	</head>
+	<body>
+		<referenceContainer name='js'>
+			<block class='Dfe\Logo\Block\Adminhtml\Product\Edit\Js' template='product/edit/js.phtml'/>
+		</referenceContainer>
+	</body>
 </page>
