@@ -21,11 +21,10 @@ final class ReadHandler {
 	 * @return P
 	 */
 	function afterExecute(Sb $sb, P $r) {
-		if ($m = self::media($r, $sb->getAttribute())) { /** @var array(array(string => mixed)) $m */
+		if ($m = self::media($r, $a = $sb->getAttribute())) { /** @var array(array(string => mixed)) $m */
+			/** @var IA|A $a */
 			$ids = array_column($m, 'value_id'); /** @var int[] $ids */
-			$r[$sb->getAttribute()->getAttributeCode()] = $this->addLogo($m, $this->loadLogo(
-				$ids, $r->getStoreId()
-			));
+			$r[$a->getAttributeCode()] = $this->addLogo($m, $this->loadLogo($ids, $r->getStoreId()));
 		}
 		return $r;
 	}
