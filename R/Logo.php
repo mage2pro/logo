@@ -21,6 +21,7 @@ class Logo extends \Df\Framework\Model\ResourceModel\Db\AbstractDb {
 	/**
 	 * 2018-03-21
 	 * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
+	 * @used-by \Dfe\Logo\Plugin\Catalog\Model\ResourceModel\Product\Gallery::afterDuplicate()
 	 * @param array(array(string => int|float)) $data
 	 * @param string[] $fields [optional]
 	 * @return int
@@ -33,6 +34,7 @@ class Logo extends \Df\Framework\Model\ResourceModel\Db\AbstractDb {
 	/**
 	 * 2018-03-21
 	 * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
+	 * @used-by \Dfe\Logo\Plugin\Catalog\Model\ResourceModel\Product\Gallery::afterDuplicate()
 	 * @param int[] $ids
 	 * @return array(array(string => int|float))
 	 * @throws LE

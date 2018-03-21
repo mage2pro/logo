@@ -1,8 +1,10 @@
 <?php
 namespace Dfe\Logo\Plugin\Catalog\Model\ResourceModel\Product;
+use Dfe\Logo\R\Logo as RM;
 use Dfe\Logo\Setup\UpgradeSchema as Schema;
 use Magento\Catalog\Model\ResourceModel\Product\Gallery as Sb;
 use Magento\Framework\DB\Select;
+use Magento\Framework\Exception\LocalizedException as LE;
 // 2018-03-21
 final class Gallery {
 	/**
@@ -38,14 +40,16 @@ final class Gallery {
 	 * @see \Magento\ProductVideo\Model\Plugin\ExternalVideoResourceBackend::afterDuplicate():
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/ProductVideo/Model/Plugin/ExternalVideoResourceBackend.php#L30-L46
 	 * @param Sb $sb
-	 * @param array $r
-	 * @return array
+	 * @param array(string => mixed) $r
+	 * @return array(string => mixed)
+	 * @throws LE
 	 */
 	function afterDuplicate(Sb $sb, array $r) {
-		$mediaGalleryEntitiesData = $this->videoResourceModel->loadByIds(array_keys($r));
+		$rm = df_o(RM::class); /** @var RM $rm */
+		$mediaGalleryEntitiesData = $rm->loadByIds(array_keys($r));
 		foreach ($mediaGalleryEntitiesData as $row) {
 			$row['value_id'] = $r[$row['value_id']];
-			$this->videoResourceModel->insertOnDuplicate($row);
+			$rm->insertOnDuplicate($row);
 		}
 		return $r;
 	}
