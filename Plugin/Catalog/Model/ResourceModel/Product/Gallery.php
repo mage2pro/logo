@@ -11,7 +11,7 @@ final class Gallery {
 	 * 2018-03-21
 	 * @see \Magento\Catalog\Model\ResourceModel\Product\Gallery::createBatchBaseSelect():
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/Catalog/Model/ResourceModel/Product/Gallery.php#L154-L203
-	 * I have implemented it by analogy with
+	 * I implemented it by analogy with
 	 * @see \Magento\ProductVideo\Model\Plugin\ExternalVideoResourceBackend::afterCreateBatchBaseSelect():
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/ProductVideo/Model/Plugin/ExternalVideoResourceBackend.php#L48-L90
 	 * @param Sb $sb
@@ -36,7 +36,7 @@ final class Gallery {
 	 * 2018-03-21
 	 * @see \Magento\Catalog\Model\ResourceModel\Product\Gallery::duplicate():
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/Catalog/Model/ResourceModel/Product/Gallery.php#L352-L415
-	 * I have implemented it by analogy with
+	 * I implemented it by analogy with
 	 * @see \Magento\ProductVideo\Model\Plugin\ExternalVideoResourceBackend::afterDuplicate():
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/ProductVideo/Model/Plugin/ExternalVideoResourceBackend.php#L30-L46
 	 * @param Sb $sb

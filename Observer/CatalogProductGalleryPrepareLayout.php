@@ -7,7 +7,7 @@ use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery\Content as B;
 final class CatalogProductGalleryPrepareLayout implements ObserverInterface {
 	/**
 	 * 2018-03-20
-	 * I have implemented it by analogy with
+	 * I implemented it by analogy with
 	 * @see \Magento\ProductVideo\Observer\ChangeTemplateObserver::execute():
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/ProductVideo/Observer/ChangeTemplateObserver.php#L11-L22
 	 * @override
