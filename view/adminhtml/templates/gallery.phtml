@@ -276,35 +276,38 @@ $elementToggleCode = $element->getToggleCode() ? $element->getToggleCode() : 'to
                 </div>
 <!-- 2018-03-20 https://www.upwork.com/d/contracts/19713438 -->
 <div class='admin__field admin__field-inline dfe-logo-field'>
-	<label class='admin__field-label' for='offset-left'>Logotype Offset Left (%, 0..100)</label>
+	<label class='admin__field-label' for='logo_left'>Logotype Offset Left (%, 0..100)</label>
 	<div class='admin__field-control'>
 		<input
 			class='admin__control-text'
-			id='offset-left'
-			name='<?= $elementName ?>[<%- data.file_id %>][offset_left]'
+			id='logo_left'
+			name='<?= $elementName ?>[<%- data.file_id %>][logo_left]'
 			type='text'
+			value='<%- data.logo_left %>'
 		/>
 	</div>
 </div>
 <div class='admin__field admin__field-inline dfe-logo-field'>
-	<label class='admin__field-label' for='offset-top'>Logotype Offset Top (%, 0..100)</label>
+	<label class='admin__field-label' for='logo_top'>Logotype Offset Top (%, 0..100)</label>
 	<div class='admin__field-control'>
 		<input
 			class='admin__control-text'
-			id='offset-top'
-			name='<?= $elementName ?>[<%- data.file_id %>][offset_top]'
+			id='logo_top'
+			name='<?= $elementName ?>[<%- data.file_id %>][logo_top]'
 			type='text'
+			value='<%- data.logo_top %>'
 		/>
 	</div>
 </div>
 <div class='admin__field admin__field-inline dfe-logo-field'>
-	<label class='admin__field-label' for='scale'>Logotype Scale (%, 0..100)</label>
+	<label class='admin__field-label' for='logo_scale'>Logotype Scale (%, 0..100)</label>
 	<div class='admin__field-control'>
 		<input
 			class='admin__control-text'
 			id='scale'
-			name='<?= $elementName ?>[<%- data.file_id %>][scale]'
+			name='<?= $elementName ?>[<%- data.file_id %>][logo_scale]'
 			type='text'
+			value='<%- data.logo_scale %>'
 		/>
 	</div>
 </div>
