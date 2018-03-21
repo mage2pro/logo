@@ -280,6 +280,7 @@ $elementToggleCode = $element->getToggleCode() ? $element->getToggleCode() : 'to
 	<div class='admin__field-control'>
 		<input
 			class='admin__control-text'
+			data-form-part='<?= $formName ?>'
 			id='logo_left'
 			name='<?= $elementName ?>[<%- data.file_id %>][logo_left]'
 			type='text'
@@ -292,6 +293,7 @@ $elementToggleCode = $element->getToggleCode() ? $element->getToggleCode() : 'to
 	<div class='admin__field-control'>
 		<input
 			class='admin__control-text'
+			data-form-part='<?= $formName ?>'
 			id='logo_top'
 			name='<?= $elementName ?>[<%- data.file_id %>][logo_top]'
 			type='text'
@@ -304,6 +306,7 @@ $elementToggleCode = $element->getToggleCode() ? $element->getToggleCode() : 'to
 	<div class='admin__field-control'>
 		<input
 			class='admin__control-text'
+			data-form-part='<?= $formName ?>'
 			id='logo_scale'
 			name='<?= $elementName ?>[<%- data.file_id %>][logo_scale]'
 			type='text'

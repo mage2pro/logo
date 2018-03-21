@@ -9,11 +9,13 @@ return function(widget) {$.widget('mage.productGallery', widget, {
 			var vr = Math.round(v);	
 			imageData[k] = v == vr ? vr : v;
 		});
+		this._super(event, imageData);
 	}
 	,_initDialog: function() {
 		this._super(); // 2018-03-21 http://api.jqueryui.com/jQuery.widget/#method-_super
 		this.$dialog.on('change', '#logo_left,#logo_top,#logo_scale', $.proxy(function(e) {
 			this.$dialog.data('imageData')[e.currentTarget.id] = e.currentTarget.value;
+			this._contentUpdated();
 		}, this));
 	}
 });return $.mage.productGallery;};});
