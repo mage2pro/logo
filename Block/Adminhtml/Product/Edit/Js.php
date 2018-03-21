@@ -12,7 +12,7 @@ class Js extends \Magento\Backend\Block\Widget
     protected $_jsonEncoder;
 
     function __construct(
-        \Dfe\Logo\Model\Value $oiValue,
+        \Dfe\Logo\M\Value $oiValue,
         \Magento\Framework\File\Size $fileSize,          
         \Magento\Framework\Registry $registry,
         \Magento\Catalog\Helper\Image $imageHelper,

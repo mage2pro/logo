@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Logo\Plugin\Catalog\Block\Product\View;
-use Dfe\Logo\Model\ResourceModel\Value as Rc;
+use Dfe\Logo\M\R\Value as Rc;
 use Magento\Catalog\Block\Product\View\Options as Sb;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Option as O;

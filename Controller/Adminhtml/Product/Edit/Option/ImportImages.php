@@ -13,7 +13,7 @@ class ImportImages extends \Magento\Backend\App\AbstractAction
 
   function __construct(
       \Magento\Backend\App\Action\Context $context,   
-      \Dfe\Logo\Model\Value $oiValue,
+      \Dfe\Logo\M\Value $oiValue,
       \Magento\Catalog\Model\Product $product,      
       \Magento\Catalog\Helper\Image $imageHelper,                           
       \Magento\Framework\Json\EncoderInterface $jsonEncoder          

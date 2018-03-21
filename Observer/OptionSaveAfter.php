@@ -30,7 +30,7 @@ class OptionSaveAfter implements ObserverInterface {
 			// 2018-03-14
 			if ((!empty($image) || $object->getDeleteImage())) {
 				df_assert(!df_check_url_absolute($image));
-				$model = $this->_objectManager->create('Dfe\Logo\Model\Value')->load($object->getId(), 'option_type_id');
+				$model = $this->_objectManager->create('Dfe\Logo\M\Value')->load($object->getId(), 'option_type_id');
 				$model->setOptionTypeId($object->getId());
 				$model->setImage($image);
 				$model->save();

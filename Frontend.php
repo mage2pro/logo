@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Logo;
 use Df\Core\Exception as DFE;
-use Dfe\Logo\Model\ResourceModel\Value as Rc;
+use Dfe\Logo\M\R\Value as Rc;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Media\Config as MC;
 use Magento\Framework\Exception\LocalizedException as LE;

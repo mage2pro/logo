@@ -1,7 +1,7 @@
 <?php
-namespace Dfe\Logo\Model;
+namespace Dfe\Logo\M;
 // 2018-03-13
-/** @method \Dfe\Logo\Model\ResourceModel\Value getResource() */
+/** @method \Dfe\Logo\M\R\Value getResource() */
 class Value extends \Magento\Framework\Model\AbstractModel {
 	protected $_productFactory;
     protected $_option;
@@ -11,8 +11,8 @@ class Value extends \Magento\Framework\Model\AbstractModel {
         \Magento\Catalog\Model\Product\Option $option,           
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry, 
-        \Dfe\Logo\Model\ResourceModel\Value $resource,
-        \Dfe\Logo\Model\ResourceModel\Value\Collection $resourceCollection,
+        \Dfe\Logo\M\R\Value $resource,
+        \Dfe\Logo\M\R\Value\Collection $resourceCollection,
         array $data = array()
     ) { 
         $this->_productFactory = $productFactory;

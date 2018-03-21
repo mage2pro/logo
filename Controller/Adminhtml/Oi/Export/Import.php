@@ -11,7 +11,7 @@ class Import extends \Dfe\Logo\Controller\Adminhtml\Oi\Export
     if ($this->getRequest()->isPost() && $this->getRequest()->getFiles('import_file')) {
         try {
             
-            $importHandler = $this->_objectManager->create('Dfe\Logo\Model\CsvImportHandler');
+            $importHandler = $this->_objectManager->create('Dfe\Logo\M\CsvImportHandler');
             $importHandler->importFromCsvFile($this->getRequest()->getFiles('import_file'));
 
             $this->messageManager->addSuccess(__('Product custom options have been imported.'));

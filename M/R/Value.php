@@ -1,13 +1,8 @@
 <?php
-namespace Dfe\Logo\Model\ResourceModel;
+namespace Dfe\Logo\M\R;
 use Magento\Framework\Exception\LocalizedException as LE;
-class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
-{
-
-  function _construct()
-  {    
-    $this->_init('optionimages_value', 'oi_value_id');
-  }
+class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb {
+	function _construct() {$this->_init('optionimages_value', 'oi_value_id');}
 
 	/**
 	 * 2018-03-13
@@ -59,7 +54,7 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 	 * 2018-03-17
 	 * «Logo name appear below logo image»
 	 * https://www.upwork.com/d/contracts/19713402
-	 * @used-by \Dfe\Logo\Model\Value::getImages()
+	 * @used-by \Dfe\Logo\M\Value::getImages()
 	 * @param $pid
 	 * @return array
 	 * @throws LE
@@ -149,9 +144,5 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
               . 'FROM `' . $this->getMainTable() . '` WHERE `option_type_id`=' . $oldTypeId;
       $this->getConnection()->query($sql);			
     }
-
   }
-
-
-
 }

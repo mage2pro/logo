@@ -18,7 +18,7 @@ class ProductCustomOptionsDataProvider
     
     function __construct(
         \Magento\Catalog\Model\Product $product,     
-        \Dfe\Logo\Model\Value $oiValue,  
+        \Dfe\Logo\M\Value $oiValue,  
         \Magento\Catalog\Helper\Image $imageHelper                           
     ) {
         $this->_product = $product;     

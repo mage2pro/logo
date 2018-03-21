@@ -19,7 +19,7 @@ class CustomOptions
         
     
     function __construct(
-        \Dfe\Logo\Model\Value $oiValue,
+        \Dfe\Logo\M\Value $oiValue,
         \Magento\Catalog\Model\Locator\LocatorInterface $locator, 
         \Magento\Catalog\Helper\Image $imageHelper,
         \Magento\Framework\UrlInterface $urlBuilder                             
