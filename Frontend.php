@@ -35,14 +35,27 @@ class Frontend extends _P {
 		$p = df_registry('product'); /** @var Product $p */
 		$mc = df_o(MC::class); /** @var MC $mc */
 		$rc = df_o(Rc::class); /** @var Rc $rc */
+		/**
+		 * 2018-03-21
+		 * @param array(string => mixed) $i
+		 * @param string $k
+		 * @param int|float $d [optional]
+		 * @return array(string => int|float)
+		 */
+		$logoF = function(array $i, $k, $d = 0) use($p) {return [$k => floatval(dfa($i,
+			"logo_$k", dfa($i, "logo_{$k}_default", $p['scale' === $k ? "dfe_logo_$k" : "dfe_logo_offset_$k"] ?: $d)
+		))];};
+		$logos = df_eta(dfa(df_eta($p['media_gallery']), 'images'));
 		return !($images = $rc->getImagesWithOptionIdAndTitle($p->getId())) ? '' : df_cc_n(
 			df_tag('div',
 				['class' => 'dfe-logo']
 				+ df_widget($this, 'main', [
-					'left' => $p['dfe_logo_offset_left'] ?: 0
+					'logoId' => !$logos ? null : df_first($logos)['value_id']
+					,'logos' => df_map(function(array $i) use($logoF) {return
+						$logoF($i, 'left') + $logoF($i, 'top') + $logoF($i, 'scale', 0.4)
+						+ ['position' => intval(dfa($i, 'position', dfa($i, 'posirtion_default', 0)))]
+					;}, $logos)
 					,'optionId' => dfa(df_first($images), 'option_id')
-					,'scale' => $p['dfe_logo_scale'] ?: 0.4
-					,'top' => $p['dfe_logo_offset_top'] ?: 0
 				])
 				, df_cc_n(df_map($images, function(array $i) use($mc) {return
 					df_tag('div', null, df_cc_n(

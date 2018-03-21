@@ -2,10 +2,9 @@
 define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 	/**
 	 * @param {Object} config
-	 * @param {Number} config.left
+	 * @param {Number} config.logoId
+	 * @param {Object} config.logos
 	 * @param {Number} config.optionId
-	 * @param {Number} config.scale
-	 * @param {Number} config.top
 	 * @param {HTMLAnchorElement} element
 	 * @returns void
 	 */
@@ -25,21 +24,23 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 					fotoramaInitialized = true;
 					var $stage = $('.fotorama__stage', $main);
 					var onStageInit = function() {
-						var scale = config.scale / 100;
 						var $logo = $('<img>').attr('class', 'dfe-logo-applied').hide().insertBefore($stage);
 						var logoEnabled = false;
 						var $select = $('#select_' + config.optionId + '.product-custom-option');
 						var normal = null;
+						var logoConfig = config.logos[config.logoId];
 						$('img', element).click(function() {
+							var $this = $(this);
+							var logoId = $this.data('id');
+							var scale = logoConfig.scale / 100;
 							// 2018-03-18
 							// I intentionally do not cache these values outside of the handler
 							// because they will be changed on the browser's window resize.
 							var $mi = $('div.fotorama__active', $stage).children('img.fotorama__img');
 							var mh = $mi[0].height;
 							var mw = $mi[0].width;
-							var left = mw * config.left / 100;
-							var top = mh * config.top / 100;
-							var $this = $(this);
+							var left = mw * logoConfig.left / 100;
+							var top = mh * logoConfig.top / 100;
 							logoEnabled = true;
 							normal = {h: $this.height() * scale, w: $this.width() * scale, mw: mw};
 							$select.val($this.data('id'));
@@ -71,8 +72,8 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 								var scaleZ = i.width / normal.mw;
 								var hZ = normal.h * scaleZ;
 								var wZ = normal.w * scaleZ;
-								var lZ = i.width * config.left / 100;
-								var tZ = i.height * config.top / 100;
+								var lZ = i.width * logoConfig.left / 100;
+								var tZ = i.height * logoConfig.top / 100;
 								$logoZ.css({
 									left: (lZ + l - wZ / 2) + 'px'
 									,top : (tZ + t - hZ / 2) + 'px'
@@ -128,8 +129,8 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 										var scaleF = i.width / normal.mw;
 										var hF = normal.h * scaleF;
 										var wF = normal.w * scaleF;
-										var lF = i.width * config.left / 100;
-										var tF = i.height * config.top / 100;
+										var lF = i.width * logoConfig.left / 100;
+										var tF = i.height * logoConfig.top / 100;
 										/**
 										 * 2018-03-18
 										 * $i.position() does not work here: it returns [0, 0].
@@ -177,7 +178,14 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 						 * https://www.upwork.com/d/contracts/19713405
 						 * http://fotorama.io/customize/api#events
 						 */
-						$f.on('fotorama:show', function() {
+						$f.on('fotorama:show', function(e, f) {
+							for (var k in config.logos) {
+								var i = config.logos[k];
+								if (f.activeIndex == i.position) {
+									logoConfig = config.logos[k];
+									break;
+								}
+							}
 							$logo.hide();
 							logoEnabled = false;
 							inF = false;
