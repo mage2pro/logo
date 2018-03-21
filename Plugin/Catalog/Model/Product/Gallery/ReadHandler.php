@@ -11,12 +11,11 @@ use Magento\Store\Model\Store;
 final class ReadHandler {
 	/**
 	 * 2018-03-21
-	 * @see \Magento\Catalog\Model\Product\Gallery\ReadHandler::execute()
+	 * @see Sb::execute()
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/Catalog/Model/Product/Gallery/ReadHandler.php#L49-L72
 	 * I implemented it by analogy with
 	 * @see \Magento\ProductVideo\Model\Plugin\Catalog\Product\Gallery\ReadHandler::afterExecute():
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/ProductVideo/Model/Plugin/Catalog/Product/Gallery/ReadHandler.php#L16-L49
-	 * @see
 	 * @param Sb $sb
 	 * @param P $r
 	 * @return P
@@ -56,7 +55,7 @@ final class ReadHandler {
 	 * @return mixed
 	 */
 	private function loadLogo(array $ids, $sid = null) {
-		$rg = df_o(RG::class); /** @var RG $rm */
+		$rg = self::rg(); /** @var RG $rg */
 		$r = $rg->loadDataFromTableByValueId(Schema::T, $ids, Store::DEFAULT_STORE_ID, [
 			'value_id' => 'value_id'
 			,'logo_left_default' => 'left'
@@ -66,7 +65,7 @@ final class ReadHandler {
 		,[[
 			['store_value' => $rg->getTable(Schema::T)]
 			,df_ccc(' AND ',
-				"{$rm->getMainTableAlias()}.value_id = store_value.value_id"
+				"{$rg->getMainTableAlias()}.value_id = store_value.value_id"
 				,!$sid ? null : "store_value.store_id = $sid"
 			)
 			,['logo_left' => 'left', 'logo_scale' => 'scale', 'logo_top' => 'top']
@@ -89,6 +88,8 @@ final class ReadHandler {
 	 * @see \Magento\ProductVideo\Model\Plugin\Catalog\Product\Gallery\AbstractHandler::getMediaEntriesDataCollection():
 	 * https://github.com/magento/magento2/blob/2.2.3/app/code/Magento/ProductVideo/Model/Plugin/Catalog/Product/Gallery/AbstractHandler.php#L40-L55
 	 * @used-by afterExecute()
+	 * @used-by \Dfe\Logo\Plugin\Catalog\Model\Product\Gallery\CreateHandler::afterExecute()
+	 * @used-by \Dfe\Logo\Plugin\Catalog\Model\Product\Gallery\CreateHandler::beforeExecute()
 	 * @param P $p
 	 * @param A|IA $a
 	 * @return array(array(string => mixed))
@@ -96,4 +97,12 @@ final class ReadHandler {
 	static function media(P $p, IA $a) {return
 		!($i = dfa($p[$a->getAttributeCode()], 'images')) || !is_array($i) ? [] : $i
 	;}
+
+	/**
+	 * 2018-03-21
+	 * @used-by loadLogo()
+	 * @used-by \Dfe\Logo\Plugin\Catalog\Model\Product\Gallery\CreateHandler::loadLogo()
+	 * @return RG
+	 */
+	static function rg() {return df_o(RG::class);}
 }
