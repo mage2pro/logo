@@ -1,7 +1,7 @@
 <?php
-namespace Dfe\Logo\M\R\Value;
+namespace Dfe\Logo\R\Value;
 use Dfe\Logo\M\Value as M;
-use Dfe\Logo\M\R\Value as RM;
+use Dfe\Logo\R\Value as R;
 // 2018-03-21
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection {
 	/**
@@ -10,5 +10,5 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 	 * @see \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection::_construct()
 	 * @used-by \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection::__construct()
 	 */
-    function _construct() {$this->_init(M::class, RM::class);}
+    function _construct() {$this->_init(M::class, R::class);}
 }

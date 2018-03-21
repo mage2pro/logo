@@ -1,5 +1,5 @@
 <?php
-namespace Dfe\Logo\M\R;
+namespace Dfe\Logo\R;
 use Magento\Framework\Exception\LocalizedException as LE;
 class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb {
 	function _construct() {$this->_init('optionimages_value', 'oi_value_id');}
