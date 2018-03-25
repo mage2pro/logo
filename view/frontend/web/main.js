@@ -31,14 +31,20 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 						var logoConfig = config.logos[config.logoId];
 						$('img', element).click(function() {
 							var $this = $(this);
-							var logoId = $this.data('id');
+							debugger;
 							var scale = logoConfig.scale / 100;
 							// 2018-03-18
 							// I intentionally do not cache these values outside of the handler
 							// because they will be changed on the browser's window resize.
 							var $mi = $('div.fotorama__active', $stage).children('img.fotorama__img');
-							var mh = $mi[0].height;
-							var mw = $mi[0].width;
+							// 2018-03-25
+							// `$mi[0].height` does not work in Internet Explorer:
+							// https://www.upwork.com/messages/rooms/room_b509c3b37b15c72c500ce79a2a9568c4/story_77a865c6c55d1124510f4f5eb2504fab
+							var mh = $mi.height();
+							// 2018-03-25
+							// `$mi[0].width` does not work in Internet Explorer:
+							// https://www.upwork.com/messages/rooms/room_b509c3b37b15c72c500ce79a2a9568c4/story_77a865c6c55d1124510f4f5eb2504fab
+							var mw = $mi.width();
 							var left = mw * logoConfig.left / 100;
 							var top = mh * logoConfig.top / 100;
 							logoEnabled = true;
@@ -69,11 +75,16 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 								if (!$logoZ) {
 									$logoZ = $('<img>').attr({class: 'dfe-logo-applied', src: $logo[0].src});
 								}
-								var scaleZ = i.width / normal.mw;
+								// 2018-03-25
+								// `i.width` and `i.height` do not work in Internet Explorer:
+								// https://www.upwork.com/messages/rooms/room_b509c3b37b15c72c500ce79a2a9568c4/story_77a865c6c55d1124510f4f5eb2504fab
+								var $i = $(i);
+								var iw = $i.width();
+								var scaleZ = iw / normal.mw;
 								var hZ = normal.h * scaleZ;
 								var wZ = normal.w * scaleZ;
-								var lZ = i.width * logoConfig.left / 100;
-								var tZ = i.height * logoConfig.top / 100;
+								var lZ = iw * logoConfig.left / 100;
+								var tZ = $i.height() * logoConfig.top / 100;
 								$logoZ.css({
 									left: (lZ + l - wZ / 2) + 'px'
 									,top : (tZ + t - hZ / 2) + 'px'
@@ -126,11 +137,15 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 									var $i = $('div.fotorama__active', $stage).children('img.fotorama__img--full');
 									var i = $i[0];
 									if (i) {
-										var scaleF = i.width / normal.mw;
+										// 2018-03-25
+										// `i.width` and `i.height` do not work in Internet Explorer:
+										// https://www.upwork.com/messages/rooms/room_b509c3b37b15c72c500ce79a2a9568c4/story_77a865c6c55d1124510f4f5eb2504fab
+										var iw = $i.width();
+										var scaleF = iw / normal.mw;
 										var hF = normal.h * scaleF;
 										var wF = normal.w * scaleF;
-										var lF = i.width * logoConfig.left / 100;
-										var tF = i.height * logoConfig.top / 100;
+										var lF = iw * logoConfig.left / 100;
+										var tF = $i.height() * logoConfig.top / 100;
 										/**
 										 * 2018-03-18
 										 * $i.position() does not work here: it returns [0, 0].
