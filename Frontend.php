@@ -53,7 +53,7 @@ class Frontend extends _P {
 					'logoId' => !$logos ? null : df_first($logos)['value_id']
 					,'logos' => df_map(function(array $i) use($logoF) {return
 						$logoF($i, 'left') + $logoF($i, 'top') + $logoF($i, 'scale', 0.4)
-						+ ['position' => intval(dfa($i, 'position', dfa($i, 'posirtion_default', 0)))]
+						+ ['position' => intval(dfa($i, 'position', dfa($i, 'position_default', 0)))]
 					;}, $logos)
 					,'optionId' => dfa(df_first($images), 'option_id')
 				])
