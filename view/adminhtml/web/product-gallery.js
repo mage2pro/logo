@@ -14,7 +14,9 @@ return function(widget) {$.widget('mage.productGallery', widget, {
 	,_initDialog: function() {
 		this._super(); // 2018-03-21 http://api.jqueryui.com/jQuery.widget/#method-_super
 		this.$dialog.on('change', '#logo_left,#logo_top,#logo_scale', $.proxy(function(e) {
-			this.$dialog.data('imageData')[e.currentTarget.id] = e.currentTarget.value;
+			var t = e.currentTarget;
+			this.$dialog.data('imageData')[t.id] = t.value;
+			this.element.find('input[type="hidden"][name="' + t.name + '"]').val(t.value);
 			this._contentUpdated();
 		}, this));
 	}
