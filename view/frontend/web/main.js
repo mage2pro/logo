@@ -71,7 +71,6 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 						$window.on('dfe.zoom.move', function(e, i, l, t) {
 							if (!inF && logoEnabled) {
 								$logo.hide();
-								console.log('dfe.zoom.move');
 								if (!$logoZ) {
 									$logoZ = $('<img>').attr({class: 'dfe-logo-applied', src: $logo[0].src});
 								}
@@ -79,17 +78,30 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 								// `i.width` and `i.height` do not work in Internet Explorer:
 								// https://www.upwork.com/messages/rooms/room_b509c3b37b15c72c500ce79a2a9568c4/story_77a865c6c55d1124510f4f5eb2504fab
 								var $i = $(i);
-								var iw = $i.width();
+								// 2018-03-31
+								// «If you move mouse over the image (we get zoom hand symbol) the logo disappear».
+								// https://github.com/mage2pro/logo/issues/3
+								// https://www.upwork.com/messages/rooms/room_b509c3b37b15c72c500ce79a2a9568c4/story_27158a35096f0682563e3689cd20ad57
+								// I have noticed that `$i.width()` and $i.height() return 0 in this case,
+								// but `i.width` and  `i.height` return the real values.
+								// Whether it works in Internet Explorer?
+								var iw = $i.width() || i.width;
+								var ih = $i.height() || i.height;
 								var scaleZ = iw / normal.mw;
 								var hZ = normal.h * scaleZ;
 								var wZ = normal.w * scaleZ;
 								var lZ = iw * logoConfig.left / 100;
-								var tZ = $i.height() * logoConfig.top / 100;
+								var tZ = ih * logoConfig.top / 100;
 								$logoZ.css({
 									left: (lZ + l - wZ / 2) + 'px'
 									,top : (tZ + t - hZ / 2) + 'px'
 									,height: hZ + 'px'
 								});
+//console.log('dfe.zoom.move: ' + [
+//	iw, i.width, $i.height(), i.height
+	//l, t, normal.mw, iw, $i.height(), normal.w, normal.h,
+	//logoConfig.left, logoConfig.top , lZ + l - wZ / 2, tZ + t - hZ / 2, hZ
+//].join(' '));
 								if (!$logoZ.parent().length) {
 									$logoZ.insertBefore($stage);
 								}
