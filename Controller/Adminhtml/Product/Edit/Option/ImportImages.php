@@ -30,7 +30,7 @@ class ImportImages extends \Magento\Backend\App\AbstractAction
   function execute()
   { 
    
-    $config = array('image' => array(), 'imageSavedAs' => array());  
+    $config = array('image' => [], 'imageSavedAs' => []);
 
     $productId = (int) $this->getRequest()->getParam('product_id');
 

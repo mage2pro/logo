@@ -5,7 +5,7 @@ namespace Dfe\Logo\M;
 class CsvImportHandler
 {
 
-    protected $_oldSku = array();
+    protected $_oldSku = [];
 
     protected $_optionTypes = array(
         'date',
@@ -73,7 +73,7 @@ class CsvImportHandler
         
         $rawData = $this->_csvParser->getData($file['tmp_name']);
 
-        $fieldNames = array();                
+        $fieldNames = [];
         foreach ($rawData[0] as $v) {
           $v = strtolower( preg_replace('/\s+/', '_', preg_replace('/[^\w\s]/', '', $v)));
           if ($v == '' || in_array($v, $fieldNames)){
@@ -83,8 +83,8 @@ class CsvImportHandler
           $fieldNames[] = $v;
         }               
 
-			  $options = array();
-			  $hasRequired =  array();
+			  $options = [];
+			  $hasRequired =  [];
 			
 			
         $countRows = 0;    
@@ -96,7 +96,7 @@ class CsvImportHandler
           if (count($csvData) == 1 && $csvData[0] === null)
             continue;
                                
-          $importData = array();
+          $importData = [];
           foreach ($fieldNames as $k => $v)
             $importData[$v] = isset($csvData[$k]) ? $csvData[$k] : '';
                     

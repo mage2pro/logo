@@ -31,7 +31,7 @@ class ProductCustomOptionsDataProvider
     function afterGetData(\Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider $subject, $data)
     {      
     
-        $productIds = array();     
+        $productIds = [];
         foreach($data['items'] as $product){
           $productIds[] = $product['entity_id'];
         }  

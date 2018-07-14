@@ -101,14 +101,14 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb {
 
   function getImagesOfProducts($productIds)
   { 
-    $images = array();
+    $images = [];
     
     if (count($productIds) == 0)
-      return array();
+      return [];
          
     $select = $this->getConnection()->select()
       ->from(array('cp' => $this->getTable('catalog_product_entity')), array('entity_id'))        
-      ->join(array('ca' => $this->getTable('catalog_product_option')), 'ca.product_id = cp.entity_id', array())      
+      ->join(array('ca' => $this->getTable('catalog_product_option')), 'ca.product_id = cp.entity_id', [])
       ->join(array('va' => $this->getTable('catalog_product_option_type_value')), 'va.option_id = ca.option_id', array('option_type_id'))
       ->join(array('oi' => $this->getMainTable()),"oi.option_type_id = va.option_type_id AND oi.image != ''" , array('image'))        
       ->where('cp.entity_id IN (?)', $productIds);                         

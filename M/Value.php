@@ -13,7 +13,7 @@ class Value extends \Magento\Framework\Model\AbstractModel {
         \Magento\Framework\Registry $registry, 
         \Dfe\Logo\R\Value $resource,
         \Dfe\Logo\R\Value\Collection $resourceCollection,
-        array $data = array()
+        array $data = []
     ) { 
         $this->_productFactory = $productFactory;
         $this->_option = $option;                         
@@ -54,14 +54,14 @@ class Value extends \Magento\Framework\Model\AbstractModel {
       $csv = $headers->toString($template) . "\n";          
       
         
-      $oi_values = array();		
+      $oi_values = [];
       foreach ($this->getCollection() as $value)
         $oi_values[$value->getOptionTypeId()] = $value->getImage();
         
       $product = $this->_productFactory->create();
       $products = $product->getCollection()->addFieldToFilter('has_options', 1);	
       foreach ($products as $product){
-        $row = array();
+        $row = [];
         $row['product_sku'] = $product->getSku();
         $options = $this->_option->getProductOptionCollection($product);
         foreach ($options as $option) {

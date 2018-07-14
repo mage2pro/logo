@@ -18,7 +18,7 @@ class Js extends \Magento\Backend\Block\Widget
         \Magento\Catalog\Helper\Image $imageHelper,
         \Magento\Framework\Json\EncoderInterface $jsonEncoder,      
         \Magento\Backend\Block\Widget\Context $context,                           
-        array $data = array()
+        array $data = []
     ) {
         $this->_oiValue = $oiValue;   
         $this->_fileSizeService = $fileSize;               
@@ -41,7 +41,7 @@ class Js extends \Magento\Backend\Block\Widget
 	
     function getDataJson()
     { 
-      $config = array('image' => array(), 'imageSavedAs' => array());
+      $config = array('image' => [], 'imageSavedAs' => []);
       $product = $this->getProduct();       
       
       $images = $this->_oiValue->getImages((int) $product->getId());        		           
