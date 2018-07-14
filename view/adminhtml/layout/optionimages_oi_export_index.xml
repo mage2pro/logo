@@ -1,6 +1,6 @@
-<?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <referenceContainer name="content">
-        <block class="Dfe\Logo\Block\Adminhtml\Oi\Export" name="optionimages_export"  template="oi/export.phtml"/>
+<?xml version='1.0'?>
+<page xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+    <referenceContainer name='content'>
+        <block class='Dfe\Logo\Block\Adminhtml\Oi\Export' name='optionimages_export'  template='oi/export.phtml'/>
     </referenceContainer>
 </page>
