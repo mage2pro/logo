@@ -1,14 +1,5 @@
 <?php
-
 namespace Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product;
-
-use Magento\Ui\Component\Container;
-use Magento\Ui\Component\Form\Field;
-use Magento\Ui\Component\Form\Element\Input;
-use Magento\Ui\Component\Form\Element\ActionDelete;
-use Magento\Ui\Component\Form\Element\DataType\Text;
-use Magento\Ui\Component\Form\Element\DataType\Number;
-
 class ProductCustomOptionsDataProvider
 {
     protected $_product; 
