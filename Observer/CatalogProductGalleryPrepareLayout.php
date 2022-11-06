@@ -20,5 +20,3 @@ final class CatalogProductGalleryPrepareLayout implements ObserverInterface {
 		$b->setTemplate('Dfe_Logo::gallery.phtml');
 	}
 }
-
-

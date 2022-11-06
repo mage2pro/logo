@@ -12,7 +12,7 @@ class UpgradeSchema extends \Df\Framework\Upgrade\Schema {
 	 * @see \Df\Framework\Upgrade::_process()
 	 * @used-by \Df\Framework\Upgrade::process()
 	 */
-	final protected function _process() {
+	final protected function _process():void {
 		if ($this->v('1.2.3')) {
 			$t = $this->c()->newTable($this->t(self::T)); /** @var T $t */
 			$t->addColumn(

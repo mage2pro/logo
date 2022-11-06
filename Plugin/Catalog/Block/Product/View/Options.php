@@ -32,4 +32,3 @@ final class Options {
 		return (int)dfa(df_eta(df_first($rc->getImagesWithOptionId($p->getId()))), 'option_id');
 	});}
 }
-

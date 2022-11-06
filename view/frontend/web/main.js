@@ -31,7 +31,6 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 						var logoConfig = config.logos[config.logoId];
 						$('img', element).click(function() {
 							var $this = $(this);
-							debugger;
 							var scale = logoConfig.scale / 100;
 							// 2018-03-18
 							// I intentionally do not cache these values outside of the handler
