@@ -66,7 +66,7 @@ class Frontend extends _P {
 					;}, $logos)
 					,'optionId' => dfa(df_first($images), 'option_id')
 				])
-				, df_cc_n(df_map($images, function(array $i) use($mc) {return
+				, df_cc_n(df_map($images, function(array $i) use($mc):string {return
 					df_tag('div', null, df_cc_n(
 						df_tag('img', [
 							'alt' => $i[Rc::K_TITLE]
