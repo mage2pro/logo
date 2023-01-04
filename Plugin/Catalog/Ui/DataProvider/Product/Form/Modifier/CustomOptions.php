@@ -1,20 +1,14 @@
 <?php
-
 namespace Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product\Form\Modifier;
-
 use Magento\Ui\Component\Container;
 use Magento\Ui\Component\Form\Field;
 use Magento\Ui\Component\Form\Element\Input;
 use Magento\Ui\Component\Form\Element\DataType\Text;
-
-class CustomOptions
-{
-
+class CustomOptions {
 	protected $_oiValue;
 	protected $locator;
 	protected $_imageHelper;
 	protected $_urlBuilder;
-
 
 	function __construct(
 		\Dfe\Logo\M\Value $oiValue,
@@ -28,22 +22,13 @@ class CustomOptions
 		$this->_urlBuilder = $urlBuilder;
 	}
 
-
-	function beforeModifyData(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $data)
-	{
-
+	function beforeModifyData(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $data) {
 		$product = $this->locator->getProduct();
-
-
 		$options = [];
-
 		$images = $this->_oiValue->getImages((int) $product->getId());
-
 		foreach ((array) $product->getOptions() as $index => $option) {
-
 			$values = $option->getValues() ?: [];
 			foreach ($values as $value) {
-
 			  $image = '';
 			  $imageUrl = '';
 			  if (isset($images[$value->getOptionTypeId()])){
@@ -55,10 +40,8 @@ class CustomOptions
 				'image' => $imageUrl,
 				'imageSavedAs' => $image
 			  ];
-
 			}
 		}
-
 		$data = array_replace_recursive(
 			$data,
 			[
@@ -70,11 +53,8 @@ class CustomOptions
 				]
 			]
 		);
-
 		return [$data];
 	}
-
-
 
 	function afterModifyMeta(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $meta)
 	{
@@ -95,8 +75,6 @@ class CustomOptions
 
 		return $meta;
 	}
-
-
 
 	protected function getOiImageFieldConfig($sortOrder)
 	{
@@ -125,10 +103,7 @@ class CustomOptions
 		];
 	}
 
-
-
-	protected function getHeaderContainerConfig($sortOrder)
-	{
+	protected function getHeaderContainerConfig($sortOrder) {
 		return [
 			'arguments' => [
 				'data' => [
@@ -146,11 +121,9 @@ class CustomOptions
 		];
 	}
 
-
-
 	protected function array_insert(&$array, $position, $insert_array) {
-	  $first_array = array_splice ($array, 0, $position);
-	  $array = array_merge ($first_array, $insert_array, $array);
+		$first_array = array_splice ($array, 0, $position);
+		$array = array_merge ($first_array, $insert_array, $array);
 	}
 
 
