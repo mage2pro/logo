@@ -18,7 +18,6 @@ class ImportImages extends \Magento\Backend\App\AbstractAction {
 		$this->_jsonEncoder = $jsonEncoder;
 		parent::__construct($context);
 	}
-  
 
   function execute()
   { 
@@ -35,6 +34,5 @@ class ImportImages extends \Magento\Backend\App\AbstractAction {
 	}
 
 	$this->getResponse()->setBody($this->_jsonEncoder->encode($config));
-  } 
-
+  }
 }
