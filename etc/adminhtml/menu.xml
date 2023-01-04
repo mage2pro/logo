@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <config>
-    <menu>
-        <add id='Dfe_Logo::oi_export' title='Product Option Images' module='Dfe_Logo' sortOrder='40' parent='Magento_Backend::system_convert' action='optionimages/oi_export/' resource='Dfe_Logo::export'/>
-    </menu>
+	<menu>
+		<add id='Dfe_Logo::oi_export' title='Product Option Images' module='Dfe_Logo' sortOrder='40' parent='Magento_Backend::system_convert' action='optionimages/oi_export/' resource='Dfe_Logo::export'/>
+	</menu>
 </config>
