@@ -51,11 +51,5 @@ class Js extends \Magento\Backend\Block\Widget {
 
 	function getUploadUrl() {return $this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');}
 
-
-
-	function getFileSizeService()
-	{
-	  return $this->_fileSizeService;
-	}
-
+	function getFileSizeService() {return $this->_fileSizeService;}
 }
