@@ -3,19 +3,14 @@ namespace Dfe\Logo\Setup;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-
 class InstallSchema implements InstallSchemaInterface {
 	/**
 	 * {@inheritdoc}
 	 * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
 	 */
-	function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
-	{
+	function install(SchemaSetupInterface $setup, ModuleContextInterface $context) {
 		$installer = $setup;
-
 		$installer->startSetup();
-		
-
 		$installer->getConnection()->dropTable($installer->getTable('optionimages_value'));
 		$table = $installer->getConnection()
 			->newTable($installer->getTable('optionimages_value'))
@@ -40,11 +35,7 @@ class InstallSchema implements InstallSchemaInterface {
 				'option_type_id', $installer->getTable('catalog_product_option_type_value'), 'option_type_id',
 				\Magento\Framework\DB\Ddl\Table::ACTION_CASCADE, \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE)
 			->setComment('Logo Value');
-
 		$installer->getConnection()->createTable($table);
-   
-   
 		$setup->endSetup();
-
 	}
 }
