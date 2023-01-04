@@ -1,12 +1,7 @@
 <?php
-
 namespace Dfe\Logo\M;
-
-class CsvImportHandler
-{
-
+class CsvImportHandler {
 	protected $_oldSku = [];
-
 	protected $_optionTypes = array(
 		'date',
 		'date_time',
@@ -19,15 +14,12 @@ class CsvImportHandler
 		'checkbox',
 		'multiple'
 	);
-
 	protected $_selectableOptionTypes = array(
 		'drop_down',
 		'radio',
 		'checkbox',
 		'multiple'
 	);
-
-
 	protected $_option;
 	protected $_productFactory;
 	protected $_resource;
@@ -64,9 +56,7 @@ class CsvImportHandler
 		return $this;
 	}
 
-
-	function importFromCsvFile($file)
-	{
+	function importFromCsvFile($file) {
 		if (!isset($file['tmp_name'])) {
 			throw new \Magento\Framework\Exception\LocalizedException(__('Invalid file upload attempt.'));
 		}
@@ -168,16 +158,12 @@ class CsvImportHandler
 			  $options[$importData['product_id']][$option_ind]['max_characters'] = $importData['max_characters'];
 			}
 		  }
- 
 		}
-
 		$connection = $this->_resource->getConnection();
 		$productModel = $this->_productFactory->create();
 		$productModel->setStoreId(0);
 		foreach ($options as $productId => $productOptions) {
-
 		  $connection->query("DELETE FROM `{$connection->getTableName('catalog_product_option')}` WHERE `product_id` = {$productId}");
-
 		  foreach ($productOptions as $option) {
 			$optionModel = $this->_objectManager->create('Magento\Catalog\Model\Product\Option');
 			$optionModel->setData($option)
@@ -185,12 +171,8 @@ class CsvImportHandler
 				->setProductId($productId)
 				->save();
 		  }
-  
 		  $required = isset($hasRequired[$productId]) ? 1 : 0;
 		  $connection->query("UPDATE `{$connection->getTableName('catalog_product_entity')}` SET `has_options`=1, `required_options`={$required} WHERE `entity_id` = {$productId}");
-
 		}
-
 	}
-
 }
