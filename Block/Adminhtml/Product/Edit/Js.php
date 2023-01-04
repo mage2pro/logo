@@ -1,7 +1,6 @@
 <?php
 namespace Dfe\Logo\Block\Adminhtml\Product\Edit;
 class Js extends \Magento\Backend\Block\Widget {
-
 	protected $_oiValue;
 	protected $_fileSizeService;
 	protected $_coreRegistry;
