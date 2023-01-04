@@ -23,31 +23,30 @@ class Js extends \Magento\Backend\Block\Widget {
 		$this->_jsonEncoder = $jsonEncoder;
 		parent::__construct($context, $data);
 	}
-   
 
-	function getProduct()
-	{
-	  if (!$this->hasData('product')) {
-		$this->setData('product', $this->_coreRegistry->registry('product'));
-	  }
-	  return $this->getData('product');
+	function getProduct() {
+		if (!$this->hasData('product')) {
+			$this->setData('product', $this->_coreRegistry->registry('product'));
+		}
+		return $this->getData('product');
 	}
 
-
-	
-	function getDataJson()
-	{
-	  $config = array('image' => [], 'imageSavedAs' => []);
-	  $product = $this->getProduct();
-
-	  $images = $this->_oiValue->getImages((int) $product->getId());
-	  foreach ($images as $id => $image) {
-		$valueId = (int) $id;
-		$config['image'][$valueId] = $this->_imageHelper->init($product, 'product_page_image_small', ['type'=>'thumbnail'])->resize(40)->setImageFile($image)->getUrl();
-		$config['imageSavedAs'][$valueId] = $image;
-	  }
-  
-	  return $this->_jsonEncoder->encode($config);
+	function getDataJson() {
+		$config = array('image' => [], 'imageSavedAs' => []);
+		$product = $this->getProduct();
+		$images = $this->_oiValue->getImages((int) $product->getId());
+		foreach ($images as $id => $image) {
+			$valueId = (int) $id;
+			$config['image'][$valueId] =
+				$this->_imageHelper
+					->init($product, 'product_page_image_small', ['type'=>'thumbnail'])
+					->resize(40)
+					->setImageFile($image)
+					->getUrl()
+			;
+			$config['imageSavedAs'][$valueId] = $image;
+		}
+		return $this->_jsonEncoder->encode($config);
 	}
 
 
