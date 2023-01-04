@@ -37,11 +37,10 @@ class Frontend extends _P {
 		/**
 		 * 2018-03-21
 		 * @param array(string => mixed) $i
-		 * @param string $k
 		 * @param int|float $d [optional]
 		 * @return array(string => int|float)
 		 */
-		$logoF = function(array $i, $k, $d = 0) use($p) {return [$k => floatval(
+		$logoF = function(array $i, string $k, $d = 0) use($p) {return [$k => floatval(
 			/**
 			 * 2018-03-31
 			 * 1) We should not use the 3-rd parameter of @uses dfa()
