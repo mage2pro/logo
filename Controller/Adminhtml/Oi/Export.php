@@ -6,7 +6,7 @@ abstract class Export extends \Magento\Backend\App\AbstractAction {
      * @var \Magento\Framework\App\Response\Http\FileFactory
      */
     protected $_fileFactory;
-	
+
     function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Catalog\Model\ResourceModel\Product $productResource,        
