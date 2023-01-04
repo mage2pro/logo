@@ -15,7 +15,6 @@ class OptionSaveAfter implements ObserverInterface {
 	  $this->_mediaDirectory  = $filesystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
 	  $this->_objectManager   = $objectManager;
   } 
- 
 
 	function execute(\Magento\Framework\Event\Observer $observer) {
 		$object = $observer->getEvent()->getObject();
