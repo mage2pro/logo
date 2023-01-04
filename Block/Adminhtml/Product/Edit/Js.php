@@ -49,12 +49,7 @@ class Js extends \Magento\Backend\Block\Widget {
 		return $this->_jsonEncoder->encode($config);
 	}
 
-
-
-	function getUploadUrl()
-	{
-	  return $this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');
-	}
+	function getUploadUrl() {return $this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');}
 
 
 
