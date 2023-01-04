@@ -43,7 +43,7 @@ class Js extends \Magento\Backend\Block\Widget {
 	  $images = $this->_oiValue->getImages((int) $product->getId());
 	  foreach ($images as $id => $image) {
 		$valueId = (int) $id;
-		$config['image'][$valueId] = $this->_imageHelper->init($product, 'product_page_image_small', array('type'=>'thumbnail'))->resize(40)->setImageFile($image)->getUrl();
+		$config['image'][$valueId] = $this->_imageHelper->init($product, 'product_page_image_small', ['type'=>'thumbnail'])->resize(40)->setImageFile($image)->getUrl();
 		$config['imageSavedAs'][$valueId] = $image;
 	  }
   
