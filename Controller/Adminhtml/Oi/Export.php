@@ -17,9 +17,5 @@ abstract class Export extends \Magento\Backend\App\AbstractAction {
 		parent::__construct($context);
 	}
 
-
-	protected function _isAllowed()
-	{
-	   return $this->_authorization->isAllowed('Dfe_Logo::export');
-	}
+	protected function _isAllowed() {return $this->_authorization->isAllowed('Dfe_Logo::export');}
 }
