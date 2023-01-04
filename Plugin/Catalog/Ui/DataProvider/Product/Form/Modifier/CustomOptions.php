@@ -126,14 +126,5 @@ class CustomOptions {
 		$array = array_merge ($first_array, $insert_array, $array);
 	}
 
-
-
-	function getUploadUrl()
-	{
-	  return $this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');
-	}
-
-
-
-
+	function getUploadUrl() {return $this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');}
 }
