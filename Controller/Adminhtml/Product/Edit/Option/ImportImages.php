@@ -1,30 +1,23 @@
 <?php
-
 namespace Dfe\Logo\Controller\Adminhtml\Product\Edit\Option;
-
-class ImportImages extends \Magento\Backend\App\AbstractAction
-{
-
-  protected $_oiValue;
-  protected $_product;    
-  protected $_imageHelper;   
-  protected $_jsonEncoder;
-  
-
-  function __construct(
-	  \Magento\Backend\App\Action\Context $context,
-	  \Dfe\Logo\M\Value $oiValue,
-	  \Magento\Catalog\Model\Product $product,
-	  \Magento\Catalog\Helper\Image $imageHelper,
-	  \Magento\Framework\Json\EncoderInterface $jsonEncoder
-  ) {
-	  $this->_oiValue = $oiValue;
-	  $this->_product = $product;
-	  $this->_imageHelper = $imageHelper;
-	  $this->_jsonEncoder = $jsonEncoder;
-
-	  parent::__construct($context);
-  } 
+class ImportImages extends \Magento\Backend\App\AbstractAction {
+	protected $_oiValue;
+	protected $_product;
+	protected $_imageHelper;
+	protected $_jsonEncoder;
+	function __construct(
+		\Magento\Backend\App\Action\Context $context,
+		\Dfe\Logo\M\Value $oiValue,
+		\Magento\Catalog\Model\Product $product,
+		\Magento\Catalog\Helper\Image $imageHelper,
+		\Magento\Framework\Json\EncoderInterface $jsonEncoder
+	) {
+		$this->_oiValue = $oiValue;
+		$this->_product = $product;
+		$this->_imageHelper = $imageHelper;
+		$this->_jsonEncoder = $jsonEncoder;
+		parent::__construct($context);
+	}
   
 
   function execute()
