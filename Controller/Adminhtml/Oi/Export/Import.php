@@ -1,11 +1,6 @@
 <?php
-
 namespace Dfe\Logo\Controller\Adminhtml\Oi\Export;
-
-class Import extends \Dfe\Logo\Controller\Adminhtml\Oi\Export
-{
-
-
+class Import extends \Dfe\Logo\Controller\Adminhtml\Oi\Export {
   function execute()
   {
     if ($this->getRequest()->isPost() && $this->getRequest()->getFiles('import_file')) {
@@ -24,6 +19,5 @@ class Import extends \Dfe\Logo\Controller\Adminhtml\Oi\Export
         $this->messageManager->addError(__('Invalid file upload attempt'));
     }
     $this->getResponse()->setRedirect($this->_redirect->getRedirectUrl($this->getUrl('*')));
-  } 
-
+  }
 }
