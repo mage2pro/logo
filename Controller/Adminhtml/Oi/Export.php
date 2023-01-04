@@ -1,9 +1,5 @@
 <?php
-
 namespace Dfe\Logo\Controller\Adminhtml\Oi;
-
-use Magento\Backend\App\Action;
-
 abstract class Export extends \Magento\Backend\App\AbstractAction
 {
 
@@ -15,7 +11,7 @@ abstract class Export extends \Magento\Backend\App\AbstractAction
     protected $_fileFactory;
 
     /**
-	 * 
+	 *
      */
     function __construct(
         \Magento\Backend\App\Action\Context $context,
