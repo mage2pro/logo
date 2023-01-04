@@ -56,11 +56,8 @@ class CustomOptions {
 		return [$data];
 	}
 
-	function afterModifyMeta(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $meta)
-	{
-
+	function afterModifyMeta(\Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions $subject, $meta) {
 		if (isset($meta[$subject::GROUP_CUSTOM_OPTIONS_NAME]['children'][$subject::GRID_OPTIONS_NAME]['children']['record']['children'][$subject::CONTAINER_OPTION]['children'][$subject::GRID_TYPE_SELECT_NAME]['children']['record']['children'])){
-
 		  $row = $meta[$subject::GROUP_CUSTOM_OPTIONS_NAME]['children'][$subject::GRID_OPTIONS_NAME]['children']['record']['children'][$subject::CONTAINER_OPTION]['children'][$subject::GRID_TYPE_SELECT_NAME]['children']['record']['children'];
  
 		  $this->array_insert($row, 4, array('image' => $this->getOiImageFieldConfig(45)));
@@ -70,9 +67,7 @@ class CustomOptions {
 		  $meta[$subject::GROUP_CUSTOM_OPTIONS_NAME]['children'][$subject::GRID_OPTIONS_NAME]['arguments']['data']['config']['pageSize'] = 1000;
 		  $meta[$subject::GROUP_CUSTOM_OPTIONS_NAME]['children'][$subject::GRID_OPTIONS_NAME]['children']['record']['children'][$subject::CONTAINER_OPTION]['children'][$subject::GRID_TYPE_SELECT_NAME]['arguments']['data']['config']['pageSize'] = 1000;
 		}
-
 		$meta[$subject::GROUP_CUSTOM_OPTIONS_NAME]['children']['oi_js_code'] = $this->getHeaderContainerConfig(40);
-
 		return $meta;
 	}
 
