@@ -1,12 +1,12 @@
 <?xml version='1.0'?>
 <config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd'>
-    <type name='Magento\Catalog\Model\Product\Option\Value'>
-        <plugin name='optionimagesDuplicateProduct' type='Dfe\Logo\M\Plugin\DuplicateProduct'/>
-    </type>  
-    <type name='Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions'>
-        <plugin name='optionimagesCustomOptions' type='Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions'/>
-    </type>
-    <type name='Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider'>
-        <plugin name='optionimagesImportCustomOptions' type='Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider'/>
-    </type>                           
+	<type name='Magento\Catalog\Model\Product\Option\Value'>
+		<plugin name='optionimagesDuplicateProduct' type='Dfe\Logo\M\Plugin\DuplicateProduct'/>
+	</type>  
+	<type name='Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions'>
+		<plugin name='optionimagesCustomOptions' type='Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions'/>
+	</type>
+	<type name='Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider'>
+		<plugin name='optionimagesImportCustomOptions' type='Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider'/>
+	</type>
 </config>
