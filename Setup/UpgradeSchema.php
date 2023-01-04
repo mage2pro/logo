@@ -70,7 +70,7 @@ class UpgradeSchema extends \Df\Framework\Upgrade\Schema {
 
 	/**
 	 * 2018-03-21
-	 * @used-by _process()
+	 * @used-by self::_process()
 	 */
 	const T = 'catalog_product_entity_media_gallery_value_logo';
 }
