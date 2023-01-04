@@ -101,48 +101,48 @@ class Value extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb {
 
   function getImagesOfProducts($productIds)
   { 
-    $images = [];
-    
-    if (count($productIds) == 0)
-      return [];
-         
-    $select = $this->getConnection()->select()
-      ->from(array('cp' => $this->getTable('catalog_product_entity')), array('entity_id'))        
-      ->join(array('ca' => $this->getTable('catalog_product_option')), 'ca.product_id = cp.entity_id', [])
-      ->join(array('va' => $this->getTable('catalog_product_option_type_value')), 'va.option_id = ca.option_id', array('option_type_id'))
-      ->join(array('oi' => $this->getMainTable()),"oi.option_type_id = va.option_type_id AND oi.image != ''" , array('image'))        
-      ->where('cp.entity_id IN (?)', $productIds);                         
+	$images = [];
 
-    $result = $this->getConnection()->fetchAll($select); 
+	if (count($productIds) == 0)
+	  return [];
 
-    foreach((array)$result as $row){
-      $images[$row['entity_id']][$row['option_type_id']] = $row['image'];
-    }
+	$select = $this->getConnection()->select()
+	  ->from(array('cp' => $this->getTable('catalog_product_entity')), array('entity_id'))
+	  ->join(array('ca' => $this->getTable('catalog_product_option')), 'ca.product_id = cp.entity_id', [])
+	  ->join(array('va' => $this->getTable('catalog_product_option_type_value')), 'va.option_id = ca.option_id', array('option_type_id'))
+	  ->join(array('oi' => $this->getMainTable()),"oi.option_type_id = va.option_type_id AND oi.image != ''" , array('image'))
+	  ->where('cp.entity_id IN (?)', $productIds);
 
-    return $images;                               
+	$result = $this->getConnection()->fetchAll($select);
+
+	foreach((array)$result as $row){
+	  $images[$row['entity_id']][$row['option_type_id']] = $row['image'];
+	}
+
+	return $images;
   }
 
 
   function duplicate($oldOptionId, $newOptionId)
   {	
 
-    $productOptionValueTable = $this->getTable('catalog_product_option_type_value');		
-        
-    $select = $this->getConnection()->select()
-      ->from($productOptionValueTable, array('option_type_id'))
-      ->where('option_id=?', $oldOptionId);
-    $oldTypeIds = $this->getConnection()->fetchCol($select);
+	$productOptionValueTable = $this->getTable('catalog_product_option_type_value');
 
-    $select = $this->getConnection()->select()
-      ->from($productOptionValueTable, array('option_type_id'))
-      ->where('option_id=?', $newOptionId);
-    $newTypeIds = $this->getConnection()->fetchCol($select);
+	$select = $this->getConnection()->select()
+	  ->from($productOptionValueTable, array('option_type_id'))
+	  ->where('option_id=?', $oldOptionId);
+	$oldTypeIds = $this->getConnection()->fetchCol($select);
 
-    foreach ($oldTypeIds as $ind => $oldTypeId) {
-          $sql = 'REPLACE INTO `' . $this->getMainTable() . '` '
-              . 'SELECT NULL, ' . $newTypeIds[$ind] . ', `image`'
-              . 'FROM `' . $this->getMainTable() . '` WHERE `option_type_id`=' . $oldTypeId;
-      $this->getConnection()->query($sql);			
-    }
+	$select = $this->getConnection()->select()
+	  ->from($productOptionValueTable, array('option_type_id'))
+	  ->where('option_id=?', $newOptionId);
+	$newTypeIds = $this->getConnection()->fetchCol($select);
+
+	foreach ($oldTypeIds as $ind => $oldTypeId) {
+		  $sql = 'REPLACE INTO `' . $this->getMainTable() . '` '
+			  . 'SELECT NULL, ' . $newTypeIds[$ind] . ', `image`'
+			  . 'FROM `' . $this->getMainTable() . '` WHERE `option_type_id`=' . $oldTypeId;
+	  $this->getConnection()->query($sql);
+	}
   }
 }
