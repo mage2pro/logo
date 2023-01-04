@@ -16,7 +16,7 @@ abstract class Export extends \Magento\Backend\App\AbstractAction {
 		$this->_fileFactory = $fileFactory;
 		parent::__construct($context);
 	}
-	
+
 
 	protected function _isAllowed()
 	{
