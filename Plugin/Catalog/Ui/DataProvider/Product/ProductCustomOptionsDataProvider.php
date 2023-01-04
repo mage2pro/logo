@@ -1,11 +1,9 @@
 <?php
 namespace Dfe\Logo\Plugin\Catalog\Ui\DataProvider\Product;
-class ProductCustomOptionsDataProvider
-{
+class ProductCustomOptionsDataProvider {
 	protected $_product;
 	protected $_oiValue;
 	protected $_imageHelper;
-
 
 	function __construct(
 		\Magento\Catalog\Model\Product $product,
@@ -17,11 +15,7 @@ class ProductCustomOptionsDataProvider
 		$this->_imageHelper = $imageHelper;
 	}
 
-
-
-	function afterGetData(\Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider $subject, $data)
-	{
-
+	function afterGetData(\Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider $subject, $data) {
 		$productIds = [];
 		foreach($data['items'] as $product){
 		  $productIds[] = $product['entity_id'];
@@ -51,10 +45,6 @@ class ProductCustomOptionsDataProvider
 			}
 		  }
 		}
-
 		return $data;
 	}
-
-
-
 }
