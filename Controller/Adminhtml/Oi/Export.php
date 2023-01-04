@@ -15,8 +15,7 @@ abstract class Export extends \Magento\Backend\App\AbstractAction
     protected $_fileFactory;
 
     /**
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
+	 * 
      */
     function __construct(
         \Magento\Backend\App\Action\Context $context,
