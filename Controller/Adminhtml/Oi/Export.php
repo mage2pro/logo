@@ -1,9 +1,6 @@
 <?php
 namespace Dfe\Logo\Controller\Adminhtml\Oi;
-abstract class Export extends \Magento\Backend\App\AbstractAction
-{
-
-
+abstract class Export extends \Magento\Backend\App\AbstractAction {
     protected $_productResource;
     /**
      * @var \Magento\Framework\App\Response\Http\FileFactory
