@@ -28,10 +28,9 @@ class Frontend extends _P {
 	 *		}
 	 *		$html = $this->_afterToHtml($html);
 	 * https://github.com/magento/magento2/blob/2.2.0/lib/internal/Magento/Framework/View/Element/AbstractBlock.php#L643-L689
-	 * @return string
 	 * @throws DFE|LE
 	 */
-	final protected function _toHtml() {
+	final protected function _toHtml():string {
 		$p = df_registry('product'); /** @var Product $p */
 		$mc = df_o(MC::class); /** @var MC $mc */
 		$rc = df_o(Rc::class); /** @var Rc $rc */

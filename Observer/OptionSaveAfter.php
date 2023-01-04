@@ -24,7 +24,7 @@ class OptionSaveAfter implements ObserverInterface {
 			if (preg_match("/.tmp$/i", $image)) {
 				$image = $this->_moveImageFromTmp($image);
 			}
-			else if ($object['imageSavedAs'] && !$object->getDeleteImage()) {
+			elseif ($object['imageSavedAs'] && !$object->getDeleteImage()) {
 				$image = $object['imageSavedAs'];
 			}
 			// 2018-03-14
