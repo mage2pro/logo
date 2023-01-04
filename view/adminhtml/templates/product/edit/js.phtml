@@ -6,28 +6,28 @@ var oiFieldSet;
 var initLogo = function(){
 
   require([
-      "jquery",
-      "jquery/ui",
-      "mage/template",
-      "jquery/file-uploader",
-      "Magento_Catalog/js/product-gallery",
-      "mage/translate"                   
+	  "jquery",
+	  "jquery/ui",
+	  "mage/template",
+	  "jquery/file-uploader",
+	  "Magento_Catalog/js/product-gallery",
+	  "mage/translate"
   ], function($, mageTemplate){
 
-    oiFieldSet = $('div[data-index="custom_options"]');
+	oiFieldSet = $('div[data-index="custom_options"]');
 
-    if (!optionImages){
-      optionImages = oiFieldSet.optionImages({
-          maxFileSize    : <?php echo (int) $this->getFileSizeService()->getMaxFileSize() ?>,
-          maxWidth       : <?php echo (int) \Magento\Framework\File\Uploader::MAX_IMAGE_WIDTH ?>,
-          maxHeight      : <?php echo (int) \Magento\Framework\File\Uploader::MAX_IMAGE_HEIGHT ?>,   
-          config         : <?php echo $this->getDataJson() ?>
-      }).data("optionImages");        
-    }
-    
-    //   to fix file uploader form_key error
-    oiFieldSet.wrap('<form id="oi_options_form"></form>');
-    $('#oi_options_form').append('<input name="form_key" type="hidden" value="<?php echo $block->getFormKey(); ?>" />');                    
+	if (!optionImages){
+	  optionImages = oiFieldSet.optionImages({
+		  maxFileSize    : <?php echo (int) $this->getFileSizeService()->getMaxFileSize() ?>,
+		  maxWidth       : <?php echo (int) \Magento\Framework\File\Uploader::MAX_IMAGE_WIDTH ?>,
+		  maxHeight      : <?php echo (int) \Magento\Framework\File\Uploader::MAX_IMAGE_HEIGHT ?>,
+		  config         : <?php echo $this->getDataJson() ?>
+	  }).data("optionImages");
+	}
+
+	//   to fix file uploader form_key error
+	oiFieldSet.wrap('<form id="oi_options_form"></form>');
+	$('#oi_options_form').append('<input name="form_key" type="hidden" value="<?php echo $block->getFormKey(); ?>" />');
  
   });
 }
@@ -35,16 +35,16 @@ var initLogo = function(){
 
 var oIAddUploader = function(uid, n){
   if (n == 10)
-    return;
+	return;
 
   if (!n)
-    n = 0;
+	n = 0;
 
   if (oiFieldSet){
-    oiFieldSet.optionImages('addUploader', uid);
+	oiFieldSet.optionImages('addUploader', uid);
   } else { //optionImages is not initialized yet
-    n++ 
-    setTimeout(function(){oIAddUploader(uid, n)}, 1000);
+	n++
+	setTimeout(function(){oIAddUploader(uid, n)}, 1000);
   }  
 }  
 
