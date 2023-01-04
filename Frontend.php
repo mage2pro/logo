@@ -60,7 +60,7 @@ class Frontend extends _P {
 				['class' => 'dfe-logo']
 				+ df_widget($this, 'main', [
 					'logoId' => !$logos ? null : df_first($logos)['value_id']
-					,'logos' => df_map(function(array $i) use($logoF) {return
+					,'logos' => df_map(function(array $i) use($logoF):array {return
 						$logoF($i, 'left') + $logoF($i, 'top') + $logoF($i, 'scale', 0.4)
 						+ ['position' => intval(dfa($i, 'position')) ?: (intval(dfa($i, 'position_default')) ?: 0)]
 					;}, $logos)
