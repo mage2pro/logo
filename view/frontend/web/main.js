@@ -130,7 +130,7 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 							}
 						};
 						/**
-						 * 2018-03-18 Dmitrii Fediuk https://www.upwork.com/fl/mage2pro
+						 * 2018-03-18 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 						 * The Porto design theme removes all the `fotorama:fullscreenenter` handlers
 						 * by the code above, so we are unable to listen to this event,
 						 * and trigger the `dfe.fotorama.fullscreenenter` event instead.
@@ -187,7 +187,7 @@ define(['df', 'df-lodash', 'jquery'], function(df, _, $) {return (
 							}
 						});
 						/**
-						 * 2018-03-18 Dmitrii Fediuk https://www.upwork.com/fl/mage2pro
+						 * 2018-03-18 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 						 * The Porto design theme removes all the `fotorama:fullscreenexit` handlers
 						 * by the code above, so we are unable to listen to this event,
 						 * and trigger the `dfe.fotorama.fullscreenexit` event instead.
