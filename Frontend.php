@@ -76,7 +76,7 @@ class Frontend extends _P {
 						,df_tag('div', null, $i[Rc::K_TITLE])
 					))
 				;}))
-			), df_link_inline(df_asset_name(null, $this, 'css'))
+			), df_link_inline(df_asset_name('', $this, 'css'))
 		);
 	}
 }
