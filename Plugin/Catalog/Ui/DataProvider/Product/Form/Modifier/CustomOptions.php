@@ -87,8 +87,13 @@ class CustomOptions {
 						'sortOrder' => $sortOrder,
 						'deleteImageText' => __('Delete Image'),
 						'browseFilesText' => __('Browse Files...'),
-						'uploadUrl' => $this->getUploadUrl(),
-						'imports' => [
+						 # 2023-08-02
+						 # 1) "«User Deprecated Functionality: Session ID is not used as URL parameter anymore»
+						 # in lib/internal/Magento/Framework/Url.php on line 771": https://github.com/mage2pro/logo/issues/4
+						 # 2) The previous code was:
+						 # 		$this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');
+						'uploadUrl' => $this->_urlBuilder->getUrl('catalog/product_gallery/upload')
+						,'imports' => [
 							'image' => '${ $.provider }:${ $.parentScope }.image',
 							'imageSavedAs' => '${ $.provider }:${ $.parentScope }.imageSavedAs'
 						]
@@ -120,6 +125,4 @@ class CustomOptions {
 		$first_array = array_splice ($array, 0, $position);
 		$array = array_merge ($first_array, $insert_array, $array);
 	}
-
-	function getUploadUrl() {return $this->_urlBuilder->addSessionParam()->getUrl('catalog/product_gallery/upload');}
 }
