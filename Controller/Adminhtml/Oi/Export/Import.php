@@ -14,8 +14,9 @@ class Import extends \Dfe\Logo\Controller\Adminhtml\Oi\Export {
 			catch (\Magento\Framework\Exception\LocalizedException $e) {
 				$this->messageManager->addError($e->getMessage());
 			}
-			catch (\Exception $e) {
-				$this->messageManager->addError($e->getMessage().__('Invalid file upload attempt'));
+			# 2023-08-03 "Treat `\Throwable` similar to `\Exception`": https://github.com/mage2pro/core/issues/311
+			catch (\Throwable $t) {
+				$this->messageManager->addError($t->getMessage().__('Invalid file upload attempt'));
 			}
 		}
 		$this->getResponse()->setRedirect($this->_redirect->getRedirectUrl($this->getUrl('*')));
